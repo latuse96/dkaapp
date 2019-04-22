@@ -1,21 +1,92 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
     <html>
     <head>
         <meta charset="UTF-8">
         <title>Menu</title>
+        <link rel="stylesheet" href="styles.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="main.js"></script>
+
     </head>
     <body>
     <header>
+
+        <button id="infoButton">Show Info</button>
         <div><p> I am the header </p></div>
         <!-- this will be a dropddown div, the infopage.php file includes that div -->
-        <div id="infopage"><p> i am the info page </p></div>
-        <div><p><a href ="index.php">i am the home icon</a></p></div>
+        <div><p><a href ="index.html">i am the home icon</a></p></div>
     </header>
 
+        <div id="info" class="infoHidden">
+            <span style="font-size: 24px; font-weight: bold;">Patient Information</span>
+            <div>
+                <div>
+                    <span style="display: inline-block">Current Weight</span>
+                    <div class="inputWrapper">
+                        <input type="text" id="cwLbs">
+                        <br />
+                        <div class="label">lbs</div>
+                    </div>
+                    <div class="inputWrapper">
+                        <input type="text" id="cwOz">
+                        <span>or</span>
+                        <br />
+                        <div class="label">oz</div>
+
+                    </div>
+
+                    <div class="inputWrapper">
+                        <input type="text" id="cwKg">
+                        <br />
+                        <div class="label">kgs</div>
+                    </div>
+                </div>
+
+                <div>
+                    <span>Age</span>
+                    <input type="text" id="age">
+                    <select id="ageType">
+                        <option value="" disabled selected>Select your option</option>
+                        <option value="years">Years</option>
+                        <option value="months">Months</option>
+                        <option value="days">Days</option>
+                    </select>
+                </div>
+
+                <div>
+                    <div>Birth Weight</div>
+                    <div class="inputWrapper">
+                        <input type="text" id="bwLbs">
+                        <br />
+                        <div class="label">lbs</div>
+                    </div>
+                    <div class="inputWrapper">
+                        <input type="text" id="bwOz">
+                        <span>or</span>
+                        <br />
+                        <div class="label">oz</div>
+
+                    </div>
+
+                    <div class="inputWrapper">
+                        <input type="text" id="bwKg">
+                        <br />
+                        <div class="label">kgs</div>
+                    </div>
+                </div>
+                <button id="saveInfo">Save</button>
+            </div>
+        </div>
+
+
+
+
+
     <h1> i am the menu page</h1>
-    <div><a href="2bagdka.php">2 bag dka</a></div>
-    <div><a href="glasgowcoma.php">glasgow coma scale</a></div>
-    <div><a href="birthweight.php">% weight from birthweight</a></div>
+    <div><a href="2bagdka.html">2 bag dka</a></div>
+    <div><a href="glasgowcoma.html">glasgow coma scale</a></div>
+    <div><a href="birthweight.html">% weight from birthweight</a></div>
     
 </body>
 </html>
