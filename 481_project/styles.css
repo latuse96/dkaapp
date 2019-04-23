@@ -39,6 +39,9 @@ iframe{
     width: 100%;
 }
 
+body{
+    margin: 0;
+}
 /* header styling */
 .header{
     padding:10px 16px;
