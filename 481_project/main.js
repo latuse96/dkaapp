@@ -122,4 +122,9 @@ $(function () {
         $(".quarterRate").text((infusionRate * .25).toFixed(2));
         $(".zeroRate").text(0);
     }
+
+    infoPrompt = function(message) {
+        $("#infoButton").click();
+        alert(message);
+    }
 })
