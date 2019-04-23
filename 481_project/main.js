@@ -1,68 +1,71 @@
 $(function () {
-    var curWeight, age, birthweight;
+    var curWeight,weightge,weight1irthweight;
 
     $("#cwLbs").on('keyup input', function () {
-        var a = parseInt($("#cwLbs").val());
-        var b = parseInt($("#cwOz").val());
-        b = b / 16;
+        var weight = parseInt($("#cwLbs").val());
+        var weight1 = parseInt($("#cwOz").val());
+        weight1= weight1/ 16;
 
-        if (!isNaN(b))
-            a = a + b;
-
-        $("#cwKg").val(a * 0.453592);
+        if (!isNaN(weight1))
+            weight = weight + weight1;
+        weight= weight* 0.453592;
+        weight = weight.toFixed(2);
+        $("#cwKg").val(weight);
     });
 
     $("#cwKg").on('keyup input', function () {
-        var a = parseInt($("#cwKg").val());
-        $("#cwLbs").val(Math.floor(a * 2.204));
-        a = a * 2.204;
-        a = a.toString().split('.')[1]
-        a = "." + a;
-        a = parseFloat(a);
-        $("#cwOz").val(a * 16);
+        var weight = parseInt($("#cwKg").val());
+        $("#cwLbs").val(Math.floor(weight * 2.204).toFixed(2));
+        weight= weight* 2.204;
+        weight=weight.toString().split('.')[1]
+        weight= "." + weight;
+        weight = parseFloat(weight * 16).toFixed(2);
+        $("#cwOz").val(weight);
     });
 
     $("#cwOz").on('keyup input', function () {
-        var a = parseInt($("#cwLbs").val());
-        var b = parseInt($("#cwOz").val());
-        b = b / 16;
+        var weight = parseInt($("#cwLbs").val());
+        var weight1 = parseInt($("#cwOz").val());
+        weight1= weight1 / 16;
 
-        if (!isNaN(a))
-            b = a + b;
+        if (!isNaN(weight))
+            weight1= weight+weight1;
 
-        $("#cwKg").val(b * 0.453592);
+        weight1 = (weight1 * 0.453592).toFixed(2);
+        $("#cwKg").val(weight1);
     });
 
     $("#bwLbs").on('keyup input', function () {
-        var a = parseInt($("#bwLbs").val());
-        var b = parseInt($("#bwOz").val());
-        b = b / 16;
+        var weight = parseInt($("#bwLbs").val());
+        var weight1 = parseInt($("#bwOz").val());
+        weight1 = weight1/ 16;
 
-        if (!isNaN(b))
-            a = a + b;
+        if (!isNaN(weight1))
+            weight= weight+weight1;
 
-        $("#bwKg").val(a * 0.453592);
+        weight = (weight * 0.453592).toFixed(2);
+        $("#bwKg").val(weight);
     });
 
     $("#bwKg").on('keyup input', function () {
-        var a = parseInt($("#bwKg").val());
-        $("#bwLbs").val(Math.floor(a * 2.204));
-        a = a * 2.204;
-        a = a.toString().split('.')[1]
-        a = "." + a;
-        a = parseFloat(a);
-        $("#bwOz").val(a * 16);
+        var weight = parseInt($("#bwKg").val());
+        $("#bwLbs").val(Math.floor(weight * 2.204).toFixed(2));
+        weight= weight* 2.204;
+        weight=weight.toString().split('.')[1]
+        weight= "." +weight;
+        weight = parseFloat(weight);
+        $("#bwOz").val((weight * 16).toFixed(2));
     });
 
     $("#bwOz").on('keyup input', function () {
-        var a = parseInt($("#bwLbs").val());
-        var b = parseInt($("#bwOz").val());
-        b = b / 16;
+        var weight= parseInt($("#bwLbs").val());
+        var weight1= parseInt($("#bwOz").val());
+        weight1= weight1/ 16;
 
-        if (!isNaN(a))
-            b = a + b;
+        if (!isNaN(weight))
+            weight1= weight+weight1;
 
-        $("#bwKg").val(b * 0.453592);
+        $("#bwKg").val((weight1 * 0.453592).toFixed(2));
     });
 
     $("#infoButton").click(function () {
@@ -71,7 +74,7 @@ $(function () {
 
     $("#saveInfo").click(function () {
         $("#info").removeClass("infoShow").addClass("infoHidden");
-        //info does not actually save yet
+        //info does notweightctually save yet
     });
 
     $("#populateTableButton").click(function() {
