@@ -10,7 +10,16 @@
             
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                     <script src="main.js"></script>
-            
+    <script>
+        $(document).ready(function(){
+        $("submit").on("click", function(){
+        var birthWeight = parseInt($('#birthWeight').val());
+        var CurrentWeight = parseInt($('#CurrentWeight').val());
+        var PercentFromBirthWeight = Math.abs((birthWeight - CurrentWeight) / 100);
+        $("#output").val(PercentFromBirthWeight);
+    });
+    });
+</script>
                 </head>
     <body>
             <header>
@@ -95,23 +104,14 @@
         <!-- this will be a dropddown div, the infopage.php file includes that div -->
         <div><p><a href ="index.html">i am the home icon</a></p></div>
     </header>
-<script>
-        $(document).ready(function(){
-        $("submit").on("click", function(){
-        var birthWeight = parseInt($('#birthWeight').val());
-        var CurrentWeight = parseInt($('#CurrentWeight').val());
-        var PercentFromBirthWeight = (birthWeight - CurrentWeight) / 100;
-        $("result").val(PercentFromBirthWeight);
-    });
-    });
-</script>
+
 <main class="content">
     <h1> i am the birthweight page</h1>
 
     <input type="text" id="birthWeight" name="option">
     <input type="text" id="CurrentWeight" name="task">
-    <input id="submit" type="button" value="press me">
-    <output type = "text" id ="Result"</output>
+    <input id="submit" type="button" value="press me"><br>
+    Result: <input type="text" class="textbox" name="Result" id="output" readonly value=""/>
    
     
     <h2>Percentage from Birthweight</h2>
