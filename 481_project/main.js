@@ -73,4 +73,30 @@ $(function () {
         $("#info").removeClass("infoShow").addClass("infoHidden");
         //info does not actually save yet
     });
+
+    $("#populateTableButton").click(function() {
+        populateTable();
+    })
+    populateTable = function() {
+        var kgWeight = $("#cwKg").val();
+        var maintenanceFluid;
+        if(kgWeight <= 10) {
+            maintenanceFluid = kgWeight * 100;
+        } else if(kgWeight <= 20) {
+            maintenanceFluid = 1000 + (kgWeight-10) * 50;
+        } else {
+            maintenanceFluid = 1500 + (kgweight-20) * 20;
+        }
+        if(maintenanceFluid > 2400) {
+            maintenanceFluid = 2400;
+        }
+        var dropFactor = 20;
+        var infusionRate = maintenanceFluid/1440 * dropFactor;
+
+        $(".fullRate").text(infusionRate);
+        $(".halfRate").text(infusionRate * .5);
+        $(".threeQuarterRate").text(infusionRate * .75);
+        $(".quarterRate").text(infusionRate * .25);
+        $(".zeroRate").text(0);
+    }
 })
