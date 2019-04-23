@@ -1,21 +1,116 @@
-
+﻿
 <!DOCTYPE html>
     <html>
     <head>
         <meta charset="UTF-8">
         <title>Menu</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="main.js"></script>
+        <link rel="stylesheet" href="styles.css">
+
+
     </head>
     <body>
     <header>
+        <button id="infoButton">Show Info</button>
+
+        <div id="info" class="infoHidden">
+            <span style="font-size: 24px; font-weight: bold;">Patient Information</span>
+            <div>
+                <div>
+                    <span style="display: inline-block">Current Weight</span>
+                    <div class="inputWrapper">
+                        <input type="text" id="cwLbs">
+                        <br />
+                        <div class="label">lbs</div>
+                    </div>
+                    <div class="inputWrapper">
+                        <input type="text" id="cwOz">
+                        <span>or</span>
+                        <br />
+                        <div class="label">oz</div>
+
+                    </div>
+
+                    <div class="inputWrapper">
+                        <input type="text" id="cwKg">
+                        <br />
+                        <div class="label">kgs</div>
+                    </div>
+                </div>
+
+                <div>
+                    <span>Age</span>
+                    <input type="text">
+                    <select>
+                        <option value="" disabled selected>Select your option</option>
+                        <option value="years">Years</option>
+                        <option value="months">Months</option>
+                        <option value="days">Days</option>
+                    </select>
+                </div>
+
+                <div>
+                    <div>Birth Weight</div>
+                    <div class="inputWrapper">
+                        <input type="text" id="bwLbs">
+                        <br />
+                        <div class="label">lbs</div>
+                    </div>
+                    <div class="inputWrapper">
+                        <input type="text" id="bwOz">
+                        <span>or</span>
+                        <br />
+                        <div class="label">oz</div>
+
+                    </div>
+
+                    <div class="inputWrapper">
+                        <input type="text" id="bwKg">
+                        <br />
+                        <div class="label">kgs</div>
+                    </div>
+                </div>
+                <button id="saveInfo">Save</button>
+
+            </div>
+        </div>
+
         <div><p> I am the header </p></div>
         <!-- this will be a dropddown div, the infopage.php file includes that div -->
-        <div id="infopage"><p> i am the info page </p></div>
-        <div><p><href a="index.php">i am the home icon</a></p></div>
+        <div><p><a href ="index.html">i am the home icon</a></p></div>
     </header>
-
-
-    <h1> i am the 2bag dka page</h1>
-    </body>
-    </html>
+    <table class="tg">
+        <tr>
+        <th class="tg-baqh">Plasma Glucose</th>
+        <th class="tg-baqh">Bag 1 - NS</th>
+        <th class="tg-baqh">Bag 2 - D10 1/2 NS</th>
+        </tr>
+        <tr>
+        <td class="tg-baqh">&gt;300</td>
+        <td class="tg-baqh fullRate"></td>
+        <td class="tg-baqh zeroRate"></td>
+        </tr>
+        <tr>
+        <td class="tg-baqh">225-300</td>
+        <td class="tg-baqh halfRate"></td>
+        <td class="tg-baqh halfRate"></td>
+        </tr>
+        <tr>
+        <td class="tg-baqh">150-224</td>
+        <td class="tg-baqh quarterRate"></td>
+        <td class="tg-baqh threeQuarterRate"></td>
+        </tr>
+        <tr>
+        <td class="tg-baqh">100-149</td>
+        <td class="tg-baqh zeroRate"></td>
+        <td class="tg-baqh fullRate"></td>
+        </tr>
+        <tr>
+        <td class="tg-baqh">&lt;100</td>
+        <td class="tg-baqh" colspan="2"></td>
+        </tr>
+    </table>
+    <button id="populateTableButton">Test</button>
 </body>
 </html>
