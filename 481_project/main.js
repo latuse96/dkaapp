@@ -97,12 +97,9 @@ $(function () {
         sessionStorage.bwLbs = $("#bwLbs").val();
         sessionStorage.bwOz = $("#bwOz").val();
         sessionStorage.bwKg = $("#bwKg").val();
+        populateTable();
     };
 
-
-    $("#populateTableButton").click(function() {
-        populateTable();
-    })
     populateTable = function() {
         var kgWeight = $("#cwKg").val();
         var maintenanceFluid;
