@@ -1,12 +1,16 @@
 $(function () {
-    sessionStorage.cwLbs = "";
-    sessionStorage.cwOz = "";
-    sessionStorage.cwKg = "";
-    sessionStorage.age = "";
-    sessionStorage.bwLbs = "";
-    sessionStorage.bwOz = "";
-    sessionStorage.bwKg = "";
+    loadInfo = function () {
+        $("#cwLbs").val(sessionStorage.cwLbs);
+        $("#cwOz").val(sessionStorage.cwOz);
+        $("#cwKg").val(sessionStorage.cwKg);
+        $("#age").val(sessionStorage.age);
+        $("#bwLbs").val(sessionStorage.bwLbs);
+        $("#bwOz").val(sessionStorage.bwOz);
+        $("#bwKg").val(sessionStorage.bwKg);
 
+    };
+
+    loadInfo();
     $("#cwLbs").on('keyup input', function () {
         var weight = parseInt($("#cwLbs").val());
         var weight1 = parseInt($("#cwOz").val());
@@ -79,7 +83,9 @@ $(function () {
     });
 
     $("#saveInfo").click(function () {
-=       saveInfo();
+        saveInfo();
+        $("#info").removeClass("infoShow").addClass("infoHidden");
+
         //info does notweightctually save yet
     });
 
@@ -91,8 +97,8 @@ $(function () {
         sessionStorage.bwLbs = $("#bwLbs").val();
         sessionStorage.bwOz = $("#bwOz").val();
         sessionStorage.bwKg = $("#bwKg").val();
-
     };
+
 
     $("#populateTableButton").click(function() {
         populateTable();
