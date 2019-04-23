@@ -48,7 +48,7 @@ body{
 /* header styling */
 .header{
     padding:10px 16px;
-    background:#555;
+    background:#406682;
     color:#f1f1f1;
     position: fixed; 
     top:0;
@@ -56,12 +56,12 @@ body{
 }
 .content{
     padding:16px;
-    padding-top:50px;
+    padding-top: 100px;
 }
 #infoButton{
     
-    background: salmon;
-    box-shadow: 2px 3px 2px #582727;
+    background: lightblue;
+    box-shadow: 2px 3px 2px #183654;
 }
 
 .column{
@@ -96,3 +96,11 @@ body{
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
 .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
 .tg .tg-baqh{text-align:center;vertical-align:top}
+
+.centered {
+    margin: 0 auto;
+}
+
+.displayBlock {
+    display: block;
+}
