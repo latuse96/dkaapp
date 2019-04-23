@@ -148,3 +148,12 @@ body{
     text-align: center;
 }
 /* END Glasgow Coma Style */
+.tg .tg-baqh{text-align:center;vertical-align:top}
+
+.centered {
+    margin: 0 auto;
+}
+
+.displayBlock {
+    display: block;
+}
