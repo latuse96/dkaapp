@@ -7,7 +7,6 @@ $(function () {
         $("#bwLbs").val(sessionStorage.bwLbs);
         $("#bwOz").val(sessionStorage.bwOz);
         $("#bwKg").val(sessionStorage.bwKg);
-
     };
 
     loadInfo();
@@ -23,14 +22,21 @@ $(function () {
         $("#cwKg").val(weight);
     });
 
-    $("#cwKg").on('keyup input', function () {
-        var weight = parseInt($("#cwKg").val());
-        $("#cwLbs").val(Math.floor(weight * 2.204).toFixed(2));
-        weight= weight* 2.204;
-        weight=weight.toString().split('.')[1]
-        weight= "." + weight;
-        weight = parseFloat(weight * 16).toFixed(2);
-        $("#cwOz").val(weight);
+    $("#cwKg").on('keyup input', function ($event) {
+        //var reg = new RegExp('^\\d+$');
+        //if (!reg.test($("#cwKg").val())) {
+        //    event.preventDefault();
+        //}
+        var input = $("#cwKg").val();
+        input = input.replace(/[^0-9.]/g, '');
+        $("#cwKg").val(input);
+
+        var weight = parseFloat($("#cwKg").val()) * 2.20462;
+        var lbs = Math.floor(weight);
+        var oz = ((weight - lbs) * 16);
+        $("#cwLbs").val(lbs.toFixed(2));
+
+        $("#cwOz").val(oz.toFixed(2));
     });
 
     $("#cwOz").on('keyup input', function () {
@@ -97,12 +103,9 @@ $(function () {
         sessionStorage.bwLbs = $("#bwLbs").val();
         sessionStorage.bwOz = $("#bwOz").val();
         sessionStorage.bwKg = $("#bwKg").val();
+        populateTable();
     };
 
-
-    $("#populateTableButton").click(function() {
-        populateTable();
-    })
     populateTable = function() {
         var kgWeight = $("#cwKg").val();
         var maintenanceFluid;
@@ -124,5 +127,10 @@ $(function () {
         $(".threeQuarterRate").text((infusionRate * .75).toFixed(2));
         $(".quarterRate").text((infusionRate * .25).toFixed(2));
         $(".zeroRate").text(0);
+    }
+
+    infoPrompt = function(message) {
+        $("#infoButton").click();
+        alert(message);
     }
 })
