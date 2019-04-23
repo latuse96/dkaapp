@@ -48,7 +48,7 @@ body{
 /* header styling */
 .header{
     padding:10px 16px;
-    background:#555;
+    background:#406682;
     color:#f1f1f1;
     position: fixed; 
     top:0;
@@ -56,12 +56,12 @@ body{
 }
 .content{
     padding:16px;
-    padding-top:50px;
+    padding-top: 100px;
 }
 #infoButton{
     
-    background: salmon;
-    box-shadow: 2px 3px 2px #582727;
+    background: lightblue;
+    box-shadow: 2px 3px 2px #183654;
 }
 
 .column{
