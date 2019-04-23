@@ -68,8 +68,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="main.js"></script>
 	<link rel="stylesheet" href="styles.css">
-	        <!-- icons -->
-			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<!-- icons -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script type="text/javascript">
         $(document).ready(function () {
             // Incoming values - retrieved from "information" menu
@@ -218,12 +218,8 @@
 </head> 
 <body>
     <header>
-        <div><p> I am the header </p></div>
-        <!-- this will be a dropddown div, the infopage.php file includes that div -->
         <div id="infopage"><p>INFO</p></div>
         <div><p><a href="index.html">HOME</a></p></div>
-    
-      <h1> i am the glasgowcoma page</h1>
       
         <!-- Temporary elements for user-specified age information -->
         <label for="age-input">Age</label><br>
@@ -235,86 +231,86 @@
         </select>
         <!-- Delete up to here to remove elements -->
 
-			<div class="header">
-				<!-- start buttons -->
-			    <div class="column">
-				    <div id="infoButton" class="headerbutton">
-					    <span >
-						    <i class="fas fa-book-medical fa-2x"></i>
-					    </span>
-					    <!-- <p>Patient Info</p> -->
-				    </div>
-			    </div>
-				<div class="column">
-					<div id="homeButton" class="headerbutton">
-						<span><a id="homelink" href ="index.html">
-							<i class="fas fa-home fa-2x"></i>
-						</a></span>
-						<!-- <p>Home</p> -->
-					</div>
+		<div class="header">
+			<!-- start buttons -->
+			<div class="column">
+				<div id="infoButton" class="headerbutton">
+					<span >
+						<i class="fas fa-book-medical fa-2x"></i>
+					</span>
+					<!-- <p>Patient Info</p> -->
 				</div>
-				<!-- end buttons -->
-					   
 			</div>
-			<!-- start info -->
-			<div id="info" class="infoHidden">
-					<span style="font-size: 24px; font-weight: bold;">Patient Information</span>
-                <div>
-					<div>
-						<span style="display: inline-block">Current Weight</span>
-						<div class="inputWrapper">
-							<input type="text" id="cwLbs">
-							<br />
-							<div class="label">lbs</div>
-						</div>
-						<div class="inputWrapper">
-							<input type="text" id="cwOz">
-							<span>or</span>
-							<br />
-							<div class="label">oz</div>
-			
-						</div>
-						<div class="inputWrapper">
-							<input type="text" id="cwKg">
-							<br />
-							<div class="label">kgs</div>
-						</div>
-					</div>
-					<div>
-						<span>Age</span>
-						<input type="text" id="age">
-						<select id="ageType">
-							<option value="" disabled selected>Select your option</option>
-							<option value="years">Years</option>
-							<option value="months">Months</option>
-							<option value="days">Days</option>
-						</select>
-					</div>
-					<div>
-						<div>Birth Weight</div>
-						<div class="inputWrapper">
-							<input type="text" id="bwLbs">
-							<br />
-							<div class="label">lbs</div>
-						</div>
-						<div class="inputWrapper">
-							<input type="text" id="bwOz">
-							<span>or</span>
-							<br />
-							<div class="label">oz</div>
-			
-						</div>
-			
-						<div class="inputWrapper">
-							<input type="text" id="bwKg">
-							<br />
-							<div class="label">kgs</div>
-						</div>
-					</div>
-					<button id="saveInfo">Save</button>
+			<div class="column">
+				<div id="homeButton" class="headerbutton">
+					<span><a id="homelink" href ="index.html">
+						<i class="fas fa-home fa-2x"></i>
+					</a></span>
+					<!-- <p>Home</p> -->
 				</div>
-            </div>
-			<!-- end info -->
+			</div>
+			<!-- end buttons -->
+					   
+		</div>
+		<!-- start info -->
+		<div id="info" class="infoHidden">
+				<span style="font-size: 24px; font-weight: bold;">Patient Information</span>
+            <div>
+				<div>
+					<span style="display: inline-block">Current Weight</span>
+					<div class="inputWrapper">
+						<input type="text" id="cwLbs">
+						<br />
+						<div class="label">lbs</div>
+					</div>
+					<div class="inputWrapper">
+						<input type="text" id="cwOz">
+						<span>or</span>
+						<br />
+						<div class="label">oz</div>
+			
+					</div>
+					<div class="inputWrapper">
+						<input type="text" id="cwKg">
+						<br />
+						<div class="label">kgs</div>
+					</div>
+				</div>
+				<div>
+					<span>Age</span>
+					<input type="text" id="age">
+					<select id="ageType">
+						<option value="" disabled selected>Select your option</option>
+						<option value="years">Years</option>
+						<option value="months">Months</option>
+						<option value="days">Days</option>
+					</select>
+				</div>
+				<div>
+					<div>Birth Weight</div>
+					<div class="inputWrapper">
+						<input type="text" id="bwLbs">
+						<br />
+						<div class="label">lbs</div>
+					</div>
+					<div class="inputWrapper">
+						<input type="text" id="bwOz">
+						<span>or</span>
+						<br />
+						<div class="label">oz</div>
+			
+					</div>
+			
+					<div class="inputWrapper">
+						<input type="text" id="bwKg">
+						<br />
+						<div class="label">kgs</div>
+					</div>
+				</div>
+				<button id="saveInfo">Save</button>
+			</div>
+        </div>
+		<!-- end info -->
 	</header>
 	<main class="content">
 	<form>
