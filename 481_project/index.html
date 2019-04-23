@@ -25,91 +25,96 @@
 
         
         <div class="header">
-               <!-- <h2> Header</h2> -->
-               <!-- <button id="infoButton">Show Info</button> -->
-               <div id="infoButton" class="headerbutton">
-                    <span >
-                        <i class="fas fa-book-medical fa-2x"></i>
-                    </span>
-                    <p>Patient Info</p>
-                </div>
-                <div id="homeButton" class="headerbutton">
-                    <span >
-                        <i class="fas fa-home fa-2x"></i>
-                    </span>
-                    <p>Home</p>
-                </div>
-                
+            <!-- start buttons -->
+               <div class="column">
+                    <div id="infoButton" class="headerbutton">
+                        <span >
+                            <i class="fas fa-book-medical fa-2x"></i>
+                        </span>
+                        <!-- <p>Patient Info</p> -->
+                    </div>
+               </div>
+               <div class="column">
+                   <div id="homeButton" class="headerbutton">
+                        <span><a id="homelink" href ="index.html">
+                            <i class="fas fa-home fa-2x"></i>
+                        </a></span>
+                        <!-- <p>Home</p> -->
+                    </div>
+               </div>
+               <!-- end buttons -->
+
+
+               
         </div>
-        <!-- this will be a dropddown div, the infopage.php file includes that div -->
-        <div><p><a href ="index.html">i am the home icon</a></p></div>
-    </header>
-    <main class="content">
+        <!-- start info -->
         <div id="info" class="infoHidden">
-            <span style="font-size: 24px; font-weight: bold;">Patient Information</span>
-            <div>
+                <span style="font-size: 24px; font-weight: bold;">Patient Information</span>
                 <div>
-                    <span style="display: inline-block">Current Weight</span>
-                    <div class="inputWrapper">
-                        <input type="text" id="cwLbs">
-                        <br />
-                        <div class="label">lbs</div>
+                    <div>
+                        <span style="display: inline-block">Current Weight</span>
+                        <div class="inputWrapper">
+                            <input type="text" id="cwLbs">
+                            <br />
+                            <div class="label">lbs</div>
+                        </div>
+                        <div class="inputWrapper">
+                            <input type="text" id="cwOz">
+                            <span>or</span>
+                            <br />
+                            <div class="label">oz</div>
+    
+                        </div>
+    
+                        <div class="inputWrapper">
+                            <input type="text" id="cwKg">
+                            <br />
+                            <div class="label">kgs</div>
+                        </div>
                     </div>
-                    <div class="inputWrapper">
-                        <input type="text" id="cwOz">
-                        <span>or</span>
-                        <br />
-                        <div class="label">oz</div>
-
+    
+                    <div>
+                        <span>Age</span>
+                        <input type="text" id="age">
+                        <select id="ageType">
+                            <option value="" disabled selected>Select your option</option>
+                            <option value="years">Years</option>
+                            <option value="months">Months</option>
+                            <option value="days">Days</option>
+                        </select>
                     </div>
-
-                    <div class="inputWrapper">
-                        <input type="text" id="cwKg">
-                        <br />
-                        <div class="label">kgs</div>
+    
+                    <div>
+                        <div>Birth Weight</div>
+                        <div class="inputWrapper">
+                            <input type="text" id="bwLbs">
+                            <br />
+                            <div class="label">lbs</div>
+                        </div>
+                        <div class="inputWrapper">
+                            <input type="text" id="bwOz">
+                            <span>or</span>
+                            <br />
+                            <div class="label">oz</div>
+    
+                        </div>
+    
+                        <div class="inputWrapper">
+                            <input type="text" id="bwKg">
+                            <br />
+                            <div class="label">kgs</div>
+                        </div>
                     </div>
+                    <button id="saveInfo">Save</button>
                 </div>
-
-                <div>
-                    <span>Age</span>
-                    <input type="text" id="age">
-                    <select id="ageType">
-                        <option value="" disabled selected>Select your option</option>
-                        <option value="years">Years</option>
-                        <option value="months">Months</option>
-                        <option value="days">Days</option>
-                    </select>
-                </div>
-
-                <div>
-                    <div>Birth Weight</div>
-                    <div class="inputWrapper">
-                        <input type="text" id="bwLbs">
-                        <br />
-                        <div class="label">lbs</div>
-                    </div>
-                    <div class="inputWrapper">
-                        <input type="text" id="bwOz">
-                        <span>or</span>
-                        <br />
-                        <div class="label">oz</div>
-
-                    </div>
-
-                    <div class="inputWrapper">
-                        <input type="text" id="bwKg">
-                        <br />
-                        <div class="label">kgs</div>
-                    </div>
-                </div>
-                <button id="saveInfo">Save</button>
-            </div>
-        </div>
-
-
-
-
-
+            
+            <!-- end info -->
+        <!-- this will be a dropddown div, the infopage.php file includes that div -->
+        
+    </header>
+    
+    <main class="content">
+        
     <h1> i am the menu page</h1>
     <div><a href="2bagdka.html">2 bag dka</a></div>
     <div><a href="glasgowcoma.html">glasgow coma scale</a></div>

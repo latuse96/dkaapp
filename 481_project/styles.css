@@ -18,6 +18,9 @@
     background-color: aliceblue;
     height:65%;
 }
+#info{
+    color:black;
+}
 
 
 input{
@@ -39,7 +42,9 @@ iframe{
     width: 100%;
 }
 
-<<<<<<< HEAD
+body{
+    margin: 0;
+}
 /* header styling */
 .header{
     padding:10px 16px;
@@ -54,34 +59,40 @@ iframe{
     padding-top:50px;
 }
 #infoButton{
-    float:left;
+    
     background: salmon;
     box-shadow: 2px 3px 2px #582727;
 }
 
+.column{
+    float:left;
+    width: 50%;
+}
 #homeButton{
-    float: right;
     background: lightblue;
-    box-shadow: 2px 3px 2px #582727;
+    box-shadow: 2px 3px 2px #183654;
 }
 
 .headerbutton{
-    
     /* background: salmon;
     box-shadow: 2px 3px 2px #582727; */
     border-radius: 25px;
     height: 50px;
     width:50px;
-    
+}
+#homelink, #homelink:active{
+    color:white
+}
+.fa-book-medical{
+    padding-left: 10px;
+    padding-top: 10px;
+} 
+.fa-home{
+    padding-left: 8px;
+    padding-top: 8px;
+}
 
-}
-.fa-book-medical, .fa-home{
-    padding-left:10px;
-    padding-top:10px;
-}
-=======
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
 .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
 .tg .tg-baqh{text-align:center;vertical-align:top}
->>>>>>> 83996b2eec84f5c781352777588990a0dfbcec13
