@@ -38,3 +38,43 @@ input{
 iframe{
     width: 100%;
 }
+
+/* header styling */
+.header{
+    padding:10px 16px;
+    background:#555;
+    color:#f1f1f1;
+    position: fixed; 
+    top:0;
+    width:100%;
+}
+.content{
+    padding:16px;
+    padding-top:50px;
+}
+#infoButton{
+    float:left;
+    background: salmon;
+    box-shadow: 2px 3px 2px #582727;
+}
+
+#homeButton{
+    float: right;
+    background: lightblue;
+    box-shadow: 2px 3px 2px #582727;
+}
+
+.headerbutton{
+    
+    /* background: salmon;
+    box-shadow: 2px 3px 2px #582727; */
+    border-radius: 25px;
+    height: 50px;
+    width:50px;
+    
+
+}
+.fa-book-medical, .fa-home{
+    padding-left:10px;
+    padding-top:10px;
+}
