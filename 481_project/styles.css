@@ -18,6 +18,9 @@
     background-color: aliceblue;
     height:65%;
 }
+#info{
+    color:black;
+}
 
 
 input{
@@ -77,7 +80,9 @@ body{
     height: 50px;
     width:50px;
 }
-
+#homelink, #homelink:active{
+    color:white
+}
 .fa-book-medical{
     padding-left: 10px;
     padding-top: 10px;
