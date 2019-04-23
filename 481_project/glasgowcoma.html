@@ -1,20 +1,307 @@
 <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Menu</title>
-    </head>
-    <body>
+<html lang="en">
+<!---------------------------------------------------------------------------
+|	Kyle Nennig																|
+|	John Kasper																|
+|	Sara Mayhew																|
+|	Ethan Latus																|
+|	Delvis Nunez															|
+|	21 April 2019															|
+|	CS480: Special Topics in Computer Science								|
+|	User Interface Design, Implementation, Evaluation						|
+|	DKAapp - glascowcoma.html												|
+---------------------------------------------------------------------------->
+<head>
+<style>
+.selection {
+    border: 1px solid black;
+	line-height: 25pt;
+	margin: 1%;
+	padding: 1%;
+}
+.selection label + input[type="radio"] {
+	margin-right: 5px;
+	float: right;
+	visibility: hidden;
+}
+.section {
+	width: 5%;
+	height: 5%;
+	text-align: center;
+}
+table {
+	border: 1px solid black;
+	padding: 1%;
+	margin: 1%;
+}
+.group {
+	width: 100%;
+}
+.output {
+	font-size: large;
+	display: inline;
+	float: right;
+	padding: 1%;
+}
+.textbox {
+	line-height: 50pt;
+	vertical-align: middle;
+	text-align: center;
+	font-size: large;
+}
+.textbox2 {
+	line-height: 50pt;
+	vertical-align: middle;
+	font-size: medium;
+	text-align: center;
+}
+</style>
+<meta charset="UTF-8">
+<title>Glasgow Coma Scale</title>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+		// Incoming values - retrieved from "information" menu
+		var bodyColor = "rgb(0,0,0)";
+		var textColor = "rgb(255,255,255)";
+		var defaultFontColor = "rgb(255,255,255)";
+		var defaultBackgroundColorA = "rgb(211,211,211,0)";
+		var defaultBackgroundColor = "rgb(211,211,211,0.35)";
+		var selectedColor = "rgb(143,188,143,0.35)";
+		var goodColor = "rgb(144,238,144,0.35)";
+		var comaColor = "rgb(255,255,200,0.50)";
+		var ageNum = "";
+		var ageUnit = "";
+		var age = ageNum + "," + ageUnit;
+		
+		// Set all element colors based on defined incoming values
+		$('body').css("background-color", bodyColor);
+		$('body').css("color", textColor);
+		$('.selection').css("background-color", defaultBackgroundColorA);
+		$('table').css("background-color", defaultBackgroundColor);
+		$('.textbox').css("background-color", defaultBackgroundColor);
+		$('.textbox').css("color", textColor);
+		$('.textbox2').css("background-color", defaultBackgroundColor);
+		$('.textbox2').css("color", textColor);
+
+		function calculate() {
+			var g1 = getGroupValues("group1").split(',');
+			var g2 = getGroupValues("group2").split(',');
+			var g3 = getGroupValues("group3").split(',');
+			if (parseInt(g1[2]) > 0 && parseInt(g2[2]) > 0 && parseInt(g3[2])) {
+				var value = parseInt(g1[2]) + parseInt(g2[2]) + parseInt(g3[2]);
+			} else {
+				var value = 0;
+			}
+			if (value >= 3 && value <8) {
+				$('#output').css("background-color", comaColor);
+				$('#outputResult').css("background-color", comaColor);
+			} else if (value >= 8) {
+				$('#output').css("background-color", goodColor);
+				$('#outputResult').css("background-color", goodColor);
+			} else {
+				$('#output').css("background-color", defaultBackgroundColor);
+				$('#outputResult').css("background-color", defaultBackgroundColor);
+			}
+			if (value >= 8) {
+				$('#outputResult').val("Good chance for recovery");
+			} else if (value >= 3 && value <= 5) {
+				$('#outputResult').val("Potentially fatal");
+			} else if (value > 5 && value < 8) {
+				$('#outputResult').val("Recovery may be possible");
+			} else {
+				$('#outputResult').val("");
+			}
+			if (value >= 3) {
+				$('#output').val(value);
+			} else {
+				$('#output').val(0);
+			}
+		}
+		function getGroupValues(groupName) {
+			var group = "input[name='" + groupName + "']:checked";
+			var val = $(group.toString()).val();
+			if (typeof val != "undefined") {
+				return val;
+			} else {
+				return val = '"","",0';
+			}
+		}
+		
+		// Functionality for age input collection
+		$('.age-num').on('input', ageNumberChange);
+		$(".age-unit").change(function() {
+			$( "select option:selected" ).each(function() {
+				ageUnit = $(this).text();
+			});
+			age = ageNum + "," + ageUnit;
+			groupUpdate();
+		});
+		function ageNumberChange() { 
+			ageNum = $(this).val();
+			age = ageNum + "," + ageUnit;
+			groupUpdate();
+		}
+		function checkIfUpdate() {
+			var input = age.split(',');
+			if (input[0] != "" && input[1] != "") {
+				console.log("updated");
+				groupUpdate();
+			}
+		}
+		
+		// Change verbal response fields based on age (<5 years)
+		function groupUpdate() {
+			$('.group').each(function() {
+				var input = age.split(',');
+				var num = parseInt(input[0]);
+				var unit = input[1].toString();
+				if (unit === "months") {
+					if (num >= 0 && num <= 23) {
+						$("#o1").text("Smiles or coos appropriately");
+						$("#o2").text("Cries and consolable");
+						$("#o3").text("Persistent inappropriate crying &/or screaming");
+						$("#o4").text("Grunts or is agitated or restless");
+						$("#o5").text("No response");
+					}
+				} else if (unit === "years") {
+					if (num >= 2 && num <=5) {
+						$("#o1").text("Appropriate words or phrases");
+						$("#o2").text("Inappropriate words");
+						$("#o3").text("Persistent cries and/or screams");
+						$("#o4").text("Grunts");
+						$("#o5").text("No response");
+					} else if (num > 5) {
+						$("#o1").text("Oriented");
+						$("#o2").text("Confused conversation, but able to answer questions");
+						$("#o3").text("Inappropriate responses, words discernible");
+						$("#o4").text("Incomprehensible speech");
+						$("#o5").text("None");
+					}
+				}
+			});
+		}
+		// Highlight row and select radio on row, label, or radio select
+		$(".selection").click(function (e) {  
+			var $radio = $(this).find('input:radio');
+			if (!$(e.target).is('input:radio')) {
+				$radio.prop('checked', !$radio.prop('checked'));
+				if (($radio).is(':checked')) {
+					if ($(e.target).is('label')) {
+						$(e.target).parent().parent().children().css("background-color", defaultBackgroundColorA);
+						$(e.target).parent().css("background-color", selectedColor);
+					} else {
+						$(e.target).parent().children().css("background-color", defaultBackgroundColorA);
+						$(e.target).css("background-color", selectedColor);
+					}
+				} else {
+					$(e.target).parent().children().css("background-color", defaultBackgroundColorA);
+				}
+			} else {
+				$(e.target).parent().parent().children().css("background-color", defaultBackgroundColorA);
+				$(e.target).parent().css("background-color", selectedColor);
+			}
+			calculate();
+		});
+	});
+</script>
+</head> 
+<body>
     <header>
         <div><p> I am the header </p></div>
         <!-- this will be a dropddown div, the infopage.php file includes that div -->
-        <div id="infopage"><p> i am the info page </p></div>
-        <div><p><href a="index.php">i am the home icon</a></p></div>
-    </header>
+        <div id="infopage"><p>INFO</p></div>
+        <div><p><a href="index.html">HOME</a></p></div>
 
-    
-    <h1> i am the glasgowcoma page</h1>
-    </body>
-    </html>
+        <!-- Temporary elements for user-specified age information -->
+        <label for="age-input">Age</label><br>
+        <input name="age-input" id="age-input" class="age-num"/>
+        <select class="age-unit">
+            <option value="" selected="selected">months/years</option>
+            <option id="months" value="months">months</option>
+            <option id="years" value="years">years</option>
+        </select>
+        <!-- Delete up to here to remove elements -->
+    </header>	
+	<form>
+		<table>
+			<tr>
+				<td class="section">
+					<label>Eye Opening Response</label>
+				</td>
+				<td class="group">
+					<div class="group1">
+						<div class="selection">
+							<label>Spontaneous-open with blinking at baseline</label><input type="radio" name="group1" value="g1,o1,4"/>
+						</div>
+						<div class="selection">
+							<label>Open to verbal command, speech, or shout</label><input type="radio" name="group1" value="g1,o2,3"/>
+						</div>
+						<div class="selection">
+							<label>Opens to pain, not applied to face</label><input type="radio" name="group1" value="g1,o3,2"/>
+						</div>
+						<div class="selection">
+							<label>None</label><input type="radio" name="group1" value="g1,o4,1"/>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<table>
+			<tr>
+				<td class="section">
+					<label>Verbal Response</label>
+				</td>
+				<td class="group">
+					<div class="selection">
+						<label id="o1">Oriented</label><input type="radio" name="group2" value="g2,o1,5"/>
+					</div>
+					<div class="selection">
+						<label id="o2">Confused conversation, but able to answer questions</label><input type="radio" name="group2" value="g2,o2,4"/>
+					</div>
+					<div class="selection">
+						<label id="o3">Inappropriate responses, words discernible</label><input type="radio" name="group2" value="g2,o3,3"/>
+					</div>
+					<div class="selection">
+						<label id="o4">Incomprehensible speech</label><input type="radio" name="group2" value="g2,o4,2"/>
+					</div>
+					<div class="selection">
+						<label id="o5">None</label><input type="radio" name="group2" value="g2,o5,1"/>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<table>
+			<tr>
+				<td class="section">
+					<label>Motor Response</label>
+				</td>
+				<td class="group">
+					<div class="selection">
+						<label>Obeys commands for movement</label><input type="radio" name="group3" value="g3,o1,6"/>
+					</div>
+					<div class="selection">
+						<label>Purposful movement to painful stimulus</label><input type="radio" name="group3" value="g3,o2,5"/>
+					</div>
+					<div class="selection">
+						<label>Withdraws from pain</label><input type="radio" name="group3" value="g3,o3,4"/>
+					</div>
+					<div class="selection">
+						<label>Abnormal (spastic) flexion, decorticate posture</label><input type="radio" name="group3" value="g3,o4,3"/>
+					</div>
+					<div class="selection">
+						<label>Extensor (rigid) response, decerebrate posture</label><input type="radio" name="group3" value="g3,o5,2"/>
+					</div>
+					<div class="selection">
+						<label>None</label><input type="radio" name="group3" value="g3,o6,1"/>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<div class="output">
+		<input type="text" class="textbox" name="outputValue" id="output" readonly value="0"/>
+		<input type="text" class="textbox2" name="result" id="outputResult" readonly value=""/>
+	</div>
 </body>
 </html>
