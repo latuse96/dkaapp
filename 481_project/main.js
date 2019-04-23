@@ -1,5 +1,11 @@
 $(function () {
-    var curWeight,weightge,weight1irthweight;
+    sessionStorage.cwLbs = "";
+    sessionStorage.cwOz = "";
+    sessionStorage.cwKg = "";
+    sessionStorage.age = "";
+    sessionStorage.bwLbs = "";
+    sessionStorage.bwOz = "";
+    sessionStorage.bwKg = "";
 
     $("#cwLbs").on('keyup input', function () {
         var weight = parseInt($("#cwLbs").val());
@@ -73,9 +79,20 @@ $(function () {
     });
 
     $("#saveInfo").click(function () {
-        $("#info").removeClass("infoShow").addClass("infoHidden");
+=       saveInfo();
         //info does notweightctually save yet
     });
+
+    saveInfo = function () {
+        sessionStorage.cwLbs = $("#cwLbs").val();
+        sessionStorage.cwOz = $("#cwOz").val();
+        sessionStorage.cwKg = $("#cwKg").val();
+        sessionStorage.age = $("#age").val();
+        sessionStorage.bwLbs = $("#bwLbs").val();
+        sessionStorage.bwOz = $("#bwOz").val();
+        sessionStorage.bwKg = $("#bwKg").val();
+
+    };
 
     $("#populateTableButton").click(function() {
         populateTable();
