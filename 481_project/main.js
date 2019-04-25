@@ -197,9 +197,9 @@ $(function () {
         alert(message);
     }
     $("#saveInfo").on("click", function(){
-        var birthWeight = sessionStorage.bwLbs + (sessionStorage.bwOz / 16);
-        
-        var CurrentWeight = sessionStorage.cwLbs + (sessionStorage.cwOz/16);
+        var birthWeight = sessionStorage.bwLbs + sessionStorage.bwOz / 16;
+        console.log(birthWeight);
+        var CurrentWeight = sessionStorage.cwLbs + sessionStorage.cwOz/16;
         $("#displayBirthWeight").val(birthWeight);
         $("#displayCurrentWeight").val(CurrentWeight);
         var difference = CurrentWeight - birthWeight;
