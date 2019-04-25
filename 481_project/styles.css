@@ -22,15 +22,24 @@
     color:black;
 }
 
+.sectionWrapper{
+    padding-bottom: 10px;
+}
+
 
 input{
-    width: 50px;
+    width: 75px;
+    font-size: 18px;
 }
 
 .label{
     width: 54px;
     text-align: center;
     min-width: 50px;
+}
+
+.boxLabel{
+    font-size: 24px;
 }
 
 .inputWrapper{
@@ -138,10 +147,35 @@ body{
     padding-top: 8px;
 }
 
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg .tg-baqh{text-align:center;vertical-align:top}
+.tg  {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+.tg td{
+    font-family:Arial, sans-serif;
+    font-size:20px;
+    padding:10px 5px;
+    border-style:solid;
+    border-width:1px;
+    overflow:hidden;
+    word-break:normal;
+    border-color:black;
+}
+.tg th{
+    font-family:Arial, sans-serif;
+    font-size:20px;
+    font-weight:normal;
+    padding:10px 5px;
+    border-style:solid;
+    border-width:1px;
+    overflow:hidden;
+    word-break:normal;
+    border-color:black;
+}
+.tg .tg-baqh{
+    text-align:center;
+    vertical-align:top
+}
 
 /* START Glasgow Coma Styles */
 .selection {
@@ -207,7 +241,7 @@ body{
 /* START birthWeight Styles */
 
   .displayTextbox{
-    width: 100px;
+    width: 75px;
     padding: 8px;
     margin: 4px 0;
     border: 2px solid #aaa;
@@ -222,7 +256,7 @@ body{
     align-content: left;
   }
   .displayWrapper {
-    width: 50%;
+    width: 30%;
     height: 350px;
     padding: 13px;
     background-color: rgb(202, 206, 206);
@@ -235,4 +269,8 @@ h1{
     font-family: 'Varela Round', sans-serif;
     font-size: 30px;
     text-align: center;
+}
+#dkaTitle {
+    padding-bottom: 20px;
+    padding-top: 125px;
 }
