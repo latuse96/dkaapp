@@ -196,13 +196,19 @@ $(function () {
         alert(message);
     }
     $("#saveInfo").on("click", function(){
-        var birthWeight = parseFloat($('#bwLbs').val());
-        var CurrentWeight = parseFloat($('#cwLbs').val());
-        var difference = bwLbs - cwLbs;
-        var PercentFromBirthWeight = Math.abs((difference/birthWeight)* 100);
-
-        $("#DisplayOutput").val(PercentFromBirthWeight.toFixed(1));
+        var birthWeight = parseFloat($('#bwLbs').val()) + (parseFloat($('#bwOz').val()))/16 ;
+        var CurrentWeight = parseFloat($('#cwLbs').val()) + parseFloat($('#cwOz').val())/16;
         $("#displayBirthWeight").val(birthWeight);
         $("#displayCurrentWeight").val(CurrentWeight);
+        var difference = CurrentWeight - birthWeight;
+        var PercentFromBirthWeight = (difference/birthWeight)* 100;
+
+        if(PercentFromBirthWeight < 0){
+            $("#DisplayOutput").val(PercentFromBirthWeight.toFixed(1));
+            $('#DisplayOutput').css("color", "red");
+        }else{
+            $("#DisplayOutput").val(PercentFromBirthWeight.toFixed(1));
+        }
+
         });
 })
