@@ -12,57 +12,6 @@
 |	DKAapp - glascowcoma.html												|
 ---------------------------------------------------------------------------->
 <head>
-    <style>
-        .selection {
-            border: 1px solid black;
-            line-height: 25pt;
-            margin: 1%;
-            padding: 1%;
-        }
-
-        .selection label + input[type="radio"] {
-            margin-right: 5px;
-            float: right;
-            visibility: hidden;
-        }
-
-        .section {
-            width: 5%;
-            height: 5%;
-            text-align: center;
-        }
-
-        table {
-            border: 1px solid black;
-            padding: 1%;
-            margin: 1%;
-        }
-
-        .group {
-            width: 100%;
-        }
-
-        .output {
-            font-size: large;
-            display: inline;
-            float: right;
-            padding: 1%;
-        }
-
-        .output textbox {
-            line-height: 50pt;
-            vertical-align: middle;
-            text-align: center;
-            font-size: large;
-        }
-
-        .output textbox2 {
-            line-height: 50pt;
-            vertical-align: middle;
-            font-size: medium;
-            text-align: center;
-        }
-    </style>
     <meta charset="UTF-8">
     <title>Glasgow Coma Scale</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -80,15 +29,16 @@
             var selectedColor = "rgb(143,188,143,0.35)";
             var goodColor = "rgb(144,238,144,0.35)";
             var comaColor = "rgb(255,255,200,0.50)";
-            var ageNum = "";
-            var ageUnit = "";
-            var age = ageNum + "," + ageUnit;
+            var ageNum = sessionStorage.age;
+            var ageUnit = sessionStorage.ageType;
+			var age = ageNum + "," + ageUnit;
+			checkIfUpdate();
 
             // Set all element colors based on defined incoming values
             $('body').css("background-color", bodyColor);
             $('body').css("color", textColor);
             $('.selection').css("background-color", defaultBackgroundColorA);
-            $('table').css("background-color", defaultBackgroundColor);
+            $('.gcTable').css("background-color", defaultBackgroundColor);
             $('.textbox').css("background-color", defaultBackgroundColor);
             $('.textbox').css("color", textColor);
             $('.textbox2').css("background-color", defaultBackgroundColor);
@@ -140,16 +90,31 @@
 
             // Functionality for age input collection
             $('.age-num').on('input', ageNumberChange);
-            $(".age-unit").change(function () {
+			$('.age-unit').change(function () {
                 $("select option:selected").each(function () {
-                    ageUnit = $(this).text();
-                });
-                age = ageNum + "," + ageUnit;
+					ageUnit = $(this).text();
+				});
+				convertUnit();
+				age = ageNum + "," + ageUnit;
+				sessionStorage.age = ageNum;
+				sessionStorage.ageType = ageUnit;
                 groupUpdate();
-            });
+			});
+			function convertUnit() {
+				if (ageUnit === "Months") {
+					ageUnit = "months";
+				} else if (ageUnit === "Years") {
+					ageUnit = "years";
+				} else if (ageUnit === "Days") {
+					ageUnit = "days";
+				}
+			}
             function ageNumberChange() {
-                ageNum = $(this).val();
-                age = ageNum + "," + ageUnit;
+				ageNum = $(this).val();
+				convertUnit();
+				age = ageNum + "," + ageUnit;
+				sessionStorage.age = ageNum;
+				sessionStorage.ageType = ageUnit;
                 groupUpdate();
             }
             function checkIfUpdate() {
@@ -157,15 +122,15 @@
                 if (input[0] != "" && input[1] != "") {
                     groupUpdate();
                 }
-            }
+			}
 
             // Change verbal response fields based on age (<5 years)
             function groupUpdate() {
                 $('.group').each(function () {
-                    var input = age.split(',');
+					var input = age.split(',');
                     var num = parseInt(input[0]);
                     var unit = input[1].toString();
-                    if (unit === "months") {
+                    if (unit === "months" || unit === "days") {
                         if (num >= 0 && num <= 23) {
                             $("#o1").text("Smiles or coos appropriately");
                             $("#o2").text("Cries and consolable");
@@ -219,17 +184,6 @@
     <header>
         <div id="infopage"><p>INFO</p></div>
         <div><p><a href="index.html">HOME</a></p></div>
-      
-        <!-- Temporary elements for user-specified age information -->
-        <label for="age-input">Age</label><br>
-        <input name="age-input" id="age-input" class="age-num"/>
-        <select class="age-unit">
-            <option value="" selected="selected">months/years</option>
-            <option id="months" value="months">months</option>
-            <option id="years" value="years">years</option>
-        </select>
-        <!-- Delete up to here to remove elements -->
-
 		<div class="header">
 			<!-- start buttons -->
 			<div class="column">
@@ -255,67 +209,65 @@
         <div id="info" class="infoHidden">
             <span style="font-size: 36px; font-weight: bold;">Patient Information</span>
             <div>
-                <div class="sectionWrapper">
-                    <div class="boxLabel" >Current Weight</div>
-                    <div class="inputWrapper">
-                        <input type="text" id="cwLbs">
-                        <br />
-                        <div class="label">lbs</div>
-                    </div>
-                    <div class="inputWrapper">
-                        <input type="text" id="cwOz">
-                        <span>or</span>
-                        <br />
-                        <div class="label">oz</div>
-
-                    </div>
-
-                    <div class="inputWrapper">
-                        <input type="text" id="cwKg">
-                        <br />
-                        <div class="label">kgs</div>
-                    </div>
-                </div>
-
-                <div class="sectionWrapper">
-                    <div class="boxLabel" >Age</div>
-                    <input type="text" id="age">
-                    <select id="ageType">
-                        <option value="" disabled selected>Select your option</option>
-                        <option value="years">Years</option>
-                        <option value="months">Months</option>
-                        <option value="days">Days</option>
-                    </select>
-                </div>
-
-                <div class="sectionWrapper">
-                    <div class="boxLabel" >Birth Weight</div>
-                    <div class="inputWrapper">
-                        <input type="text" id="bwLbs">
-                        <br />
-                        <div class="label">lbs</div>
-                    </div>
-                    <div class="inputWrapper">
-                        <input type="text" id="bwOz">
-                        <span>or</span>
-                        <br />
-                        <div class="label">oz</div>
-
-                    </div>
-
-                    <div class="inputWrapper">
-                        <input type="text" id="bwKg">
-                        <br />
-                        <div class="label">kgs</div>
-                    </div>
-                </div>
-                <button id="saveInfo">Save</button>
-            </div>
+				<div>
+					<span style="display: inline-block">Current Weight</span>
+					<div class="inputWrapper">
+						<input type="text" id="cwLbs">
+						<br />
+						<div class="label">lbs</div>
+					</div>
+					<div class="inputWrapper">
+						<input type="text" id="cwOz">
+						<span>or</span>
+						<br />
+						<div class="label">oz</div>
+			
+					</div>
+					<div class="inputWrapper">
+						<input type="text" id="cwKg">
+						<br />
+						<div class="label">kgs</div>
+					</div>
+				</div>
+				<div>
+					<span>Age</span>
+					<input type="text" id="age" class="age-num">
+					<select id="ageType" class="age-unit">
+						<option value="" disabled selected>Select your option</option>
+						<option value="years">Years</option>
+						<option value="months">Months</option>
+						<option value="days">Days</option>
+					</select>
+				</div>
+				<div>
+					<div>Birth Weight</div>
+					<div class="inputWrapper">
+						<input type="text" id="bwLbs">
+						<br />
+						<div class="label">lbs</div>
+					</div>
+					<div class="inputWrapper">
+						<input type="text" id="bwOz">
+						<span>or</span>
+						<br />
+						<div class="label">oz</div>
+			
+					</div>
+			
+					<div class="inputWrapper">
+						<input type="text" id="bwKg">
+						<br />
+						<div class="label">kgs</div>
+					</div>
+				</div>
+				<button id="saveInfo">Save</button>
+			</div>
+        </div>
 		<!-- end info -->
 	</header>
 	<main class="content">
 	<form>
-		<table>
+		<table class="gcTable">
 			<tr>
 				<td class="section">
 					<label>Eye Opening Response</label>
@@ -338,31 +290,31 @@
 				</td>
 			</tr>
 		</table>
-		<table>
+		<table class="gcTable">
 			<tr>
 				<td class="section">
 					<label>Verbal Response</label>
 				</td>
 				<td class="group">
 					<div class="selection">
-						<label id="o1">Oriented</label><input type="radio" name="group2" value="g2,o1,5"/>
+						<label id="o1"></label><input type="radio" name="group2" value="g2,o1,5"/>
 					</div>
 					<div class="selection">
-						<label id="o2">Confused conversation, but able to answer questions</label><input type="radio" name="group2" value="g2,o2,4"/>
+						<label id="o2"></label><input type="radio" name="group2" value="g2,o2,4"/>
 					</div>
 					<div class="selection">
-						<label id="o3">Inappropriate responses, words discernible</label><input type="radio" name="group2" value="g2,o3,3"/>
+						<label id="o3"></label><input type="radio" name="group2" value="g2,o3,3"/>
 					</div>
 					<div class="selection">
-						<label id="o4">Incomprehensible speech</label><input type="radio" name="group2" value="g2,o4,2"/>
+						<label id="o4"></label><input type="radio" name="group2" value="g2,o4,2"/>
 					</div>
 					<div class="selection">
-						<label id="o5">None</label><input type="radio" name="group2" value="g2,o5,1"/>
+						<label id="o5"></label><input type="radio" name="group2" value="g2,o5,1"/>
 					</div>
 				</td>
 			</tr>
 		</table>
-		<table>
+		<table class="gcTable">
 			<tr>
 				<td class="section">
 					<label>Motor Response</label>
