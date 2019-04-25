@@ -183,6 +183,7 @@ $(function () {
         var infusionRate = (maintenanceFluid/1440 * dropFactor);
         var insulinInfusionUnits = 0.1 * kgWeight;
 
+        $("#dkaTitle").text("DKA Two-Bag Chart for Patient weighing " + kgWeight + " kg")
         $(".fullRate").text(infusionRate.toFixed(2));
         $(".halfRate").text((infusionRate * .5).toFixed(2));
         $(".threeQuarterRate").text((infusionRate * .75).toFixed(2));
