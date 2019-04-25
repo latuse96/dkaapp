@@ -7,29 +7,45 @@ $(function () {
         $("#bwLbs").val(sessionStorage.bwLbs);
         $("#bwOz").val(sessionStorage.bwOz);
         $("#bwKg").val(sessionStorage.bwKg);
+        $("#ageType").val(sessionStorage.ageType);
     };
 
     loadInfo();
-    $("#cwLbs").on('keyup input', function () {
-        var weight = parseInt($("#cwLbs").val());
-        var weight1 = parseInt($("#cwOz").val());
-        weight1= weight1/ 16;
 
-        if (!isNaN(weight1))
-            weight = weight + weight1;
-        weight= weight* 0.453592;
-        weight = weight.toFixed(2);
-        $("#cwKg").val(weight);
+
+    $("#cwLbs").on('keyup input', function () {
+        var input = $("#cwLbs").val();
+        input = input.replace(/[^0-9.]/g, '');
+        $("#cwLbs").val(input);
+
+        if (input == ""){
+            if ($("#cwOz").val() == "")
+                $("#cwKg").val("");
+            return; 
+        }
+
+        var pounds = parseFloat($("#cwLbs").val());
+        var oz = parseFloat($("#cwOz").val());
+        if (isNaN(oz))
+            oz = 0;
+
+        var kg = pounds + oz / 16;
+        kg = kg * 0.45359237
+
+        kg = kg.toFixed(2);
+        $("#cwKg").val(kg);
     });
 
     $("#cwKg").on('keyup input', function ($event) {
-        //var reg = new RegExp('^\\d+$');
-        //if (!reg.test($("#cwKg").val())) {
-        //    event.preventDefault();
-        //}
         var input = $("#cwKg").val();
         input = input.replace(/[^0-9.]/g, '');
         $("#cwKg").val(input);
+
+        if (input == ""){
+            $("#cwOz").val("");
+            $("#cwLbs").val("");
+            return; 
+        }
 
         var weight = parseFloat($("#cwKg").val()) * 2.20462;
         var lbs = Math.floor(weight);
@@ -40,48 +56,91 @@ $(function () {
     });
 
     $("#cwOz").on('keyup input', function () {
-        var weight = parseInt($("#cwLbs").val());
-        var weight1 = parseInt($("#cwOz").val());
-        weight1= weight1 / 16;
+        var input = $("#cwOz").val();
+        input = input.replace(/[^0-9.]/g, '');
+        $("#cwOz").val(input);
 
-        if (!isNaN(weight))
-            weight1= weight+weight1;
+        if (input == ""){
+            if ($("#cwLbs").val() == "")
+                $("#cwKg").val("");
+            return; 
+        }
 
-        weight1 = (weight1 * 0.453592).toFixed(2);
-        $("#cwKg").val(weight1);
+        var pounds = parseFloat($("#cwLbs").val());
+        var oz = parseFloat($("#cwOz").val());
+        if (isNaN(pounds))
+            pounds = 0;
+
+        var kg = pounds + oz / 16;
+        kg = kg * 0.45359237
+
+        kg = kg.toFixed(2);
+        $("#cwKg").val(kg);
     });
 
     $("#bwLbs").on('keyup input', function () {
-        var weight = parseInt($("#bwLbs").val());
-        var weight1 = parseInt($("#bwOz").val());
-        weight1 = weight1/ 16;
+        var input = $("#bwLbs").val();
+        input = input.replace(/[^0-9.]/g, '');
+        $("#bwLbs").val(input);
 
-        if (!isNaN(weight1))
-            weight= weight+weight1;
+        if (input == ""){
+            if ($("#bwOz").val() == "")
+                $("#bwKg").val("");
+            return; 
+        }
 
-        weight = (weight * 0.453592).toFixed(2);
-        $("#bwKg").val(weight);
+        var pounds = parseFloat($("#bwLbs").val());
+        var oz = parseFloat($("#bwOz").val());
+        if (isNaN(oz))
+            oz = 0;
+
+        var kg = pounds + oz / 16;
+        kg = kg * 0.45359237
+
+        kg = kg.toFixed(2);
+        $("#bwKg").val(kg);
     });
 
     $("#bwKg").on('keyup input', function () {
-        var weight = parseInt($("#bwKg").val());
-        $("#bwLbs").val(Math.floor(weight * 2.204).toFixed(2));
-        weight= weight* 2.204;
-        weight=weight.toString().split('.')[1]
-        weight= "." +weight;
-        weight = parseFloat(weight);
-        $("#bwOz").val((weight * 16).toFixed(2));
+        var input = $("#bwKg").val();
+        input = input.replace(/[^0-9.]/g, '');
+        $("#bwKg").val(input);
+
+        if (input == ""){
+            $("#bwOz").val("");
+            $("#bwLbs").val("");
+            return; 
+        }
+
+        var weight = parseFloat($("#bwKg").val()) * 2.20462;
+        var lbs = Math.floor(weight);
+        var oz = ((weight - lbs) * 16);
+        $("#bwLbs").val(lbs.toFixed(2));
+
+        $("#bwOz").val(oz.toFixed(2));
     });
 
     $("#bwOz").on('keyup input', function () {
-        var weight= parseInt($("#bwLbs").val());
-        var weight1= parseInt($("#bwOz").val());
-        weight1= weight1/ 16;
+        var input = $("#bwOz").val();
+        input = input.replace(/[^0-9.]/g, '');
+        $("#bwOz").val(input);
 
-        if (!isNaN(weight))
-            weight1= weight+weight1;
+        if (input == ""){
+            if ($("#bwLbs").val() == "")
+                $("#bwKg").val("");
+            return; 
+        }
 
-        $("#bwKg").val((weight1 * 0.453592).toFixed(2));
+        var pounds = parseFloat($("#bwLbs").val());
+        var oz = parseFloat($("#bwOz").val());
+        if (isNaN(pounds))
+            pounds = 0;
+
+        var kg = pounds + oz / 16;
+        kg = kg * 0.45359237
+
+        kg = kg.toFixed(2);
+        $("#bwKg").val(kg);
     });
 
     $("#infoButton").click(function () {
@@ -103,6 +162,7 @@ $(function () {
         sessionStorage.bwLbs = $("#bwLbs").val();
         sessionStorage.bwOz = $("#bwOz").val();
         sessionStorage.bwKg = $("#bwKg").val();
+        sessionStorage.ageType = $("#ageType").children("option:selected").val();
         populateTable();
     };
 
