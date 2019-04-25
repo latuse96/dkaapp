@@ -1,12 +1,16 @@
 ﻿<!DOCTYPE html>
-    <html>
+<html>
     <head>
-                    <meta charset="UTF-8">
-                    <title>Menu</title>
-                    <link rel="stylesheet" href="styles.css">
-                    <!-- icons -->
-                    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-            
+            <meta charset="UTF-8">
+            <title>Menu</title>
+            <link rel="stylesheet" href="styles.css">
+            <!-- icons -->
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    
+    
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="main.js"></script>
+
             
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                     <script src="main.js"></script>
@@ -34,44 +38,34 @@
                            </div>
                            <!-- end buttons -->
                     </div>
-                    <div id="info" class="infoHidden">
-                        <span style="font-size: 36px; font-weight: bold;">Patient Information</span>
-                        <div>
-                            <div class="sectionWrapper">
-                                <div class="boxLabel" >Current Weight</div>
+            <div id="info" class="infoHidden">
                                 <div class="inputWrapper">
-                                    <input type="text" id="cwLbs">
-                                    <br />
-                                    <div class="label">lbs</div>
-                                </div>
-                                <div class="inputWrapper">
-                                    <input type="text" id="cwOz">
-                                    <span>or</span>
-                                    <br />
+                                        <input type="text" id="cwOz">
+                                        <span>or</span>
+                                        <br>
                                     <div class="label">oz</div>
-            
+
                                 </div>
-            
+
                                 <div class="inputWrapper">
                                     <input type="text" id="cwKg">
-                                    <br />
+                                    <br>
                                     <div class="label">kgs</div>
                                 </div>
-                            </div>
-            
-                            <div class="sectionWrapper">
-                                <div class="boxLabel" >Age</div>
-                                <input type="text" id="age">
-                                <select id="ageType">
+
+                            <div>
+                                <span>Age</span>
+                                <input type="text">
+                                <select>
                                     <option value="" disabled selected>Select your option</option>
                                     <option value="years">Years</option>
                                     <option value="months">Months</option>
                                     <option value="days">Days</option>
                                 </select>
                             </div>
-            
-                            <div class="sectionWrapper">
-                                <div class="boxLabel" >Birth Weight</div>
+
+                            <div>
+                                <div>Birth Weight</div>
                                 <div class="inputWrapper">
                                     <input type="text" id="bwLbs">
                                     <br />
@@ -82,9 +76,9 @@
                                     <span>or</span>
                                     <br />
                                     <div class="label">oz</div>
-            
+
                                 </div>
-            
+
                                 <div class="inputWrapper">
                                     <input type="text" id="bwKg">
                                     <br />
@@ -92,26 +86,31 @@
                                 </div>
                             </div>
                             <button id="saveInfo">Save</button>
-                        </div>
+            </div>
+
+        <div><p> I am the header </p></div>
+        <!-- this will be a dropddown div, the infopage.php file includes that div -->
+        <div><p><a href ="index.html">i am the home icon</a></p></div>
     </header>
 
 <main class="content">
     
     <div class = "displayWrapper">
-        <h1> Percentage from Birthweight </h1><br>
-        <table>
-            <tr><td><label for="birthWeight">Birth Weight:</label>                
-                <td><input type="text" class="displayTextbox" id="displayBirthWeight" readonly value="" size="20"/><label>Lbs</label>
-            <tr><td><label for="currentWeigth">Current Weight:</label>
-                <input type="text" class="displayTextbox" id="displayCurrentWeight" readonly value="" size = "20"/><label>Lbs</label>
-            <tr><td><label for="difference">Difference:</label>
-                <input type="text" class="displayTextbox"  id="DifferenceOutput" readonly value="" size = "20"/><label>Lbs</label>
-            <tr><td><label for="percentage">%:</label>
-                <input type="text" class="displayTextbox" id="DisplayOutput" readonly value="" size = "20"/> 
-        </table>
-            
-</div>  
-
+                <h1> Percentage from Birthweight </h1><br>
+                <table>
+                    <tr><td><label for="birthWeight">Birth Weight:</label>                
+                        <td><input type="text" class="displayTextbox" id="displayBirthWeight" readonly value="" size="20"/><label>Lbs</label>
+                    <tr><td><label for="currentWeigth">Current Weight:</label>
+                        <input type="text" class="displayTextbox" id="displayCurrentWeight" readonly value="" size = "20"/><label>Lbs</label>
+                    <tr><td><label for="difference">Difference:</label>
+                        <input type="text" class="displayTextbox" name="Result" id="DifferenceOutput" readonly value="" size = "20"/><label>Lbs</label>
+                    <tr><td><label for="percentage">%:</label>
+                        <input type="text" class="displayTextbox" name="Result" id="DisplayOutput" readonly value="" size = "20"/> 
+                </table>
+                    
+    </div>  
+    
+    
 </main>
 </body>
 </html>
