@@ -150,15 +150,7 @@ body{
 .output {
     font-size: large;
     display: inline;
-    float: right;
     padding: 1%;
-}
-
-.output textbox {
-    line-height: 50pt;
-    vertical-align: middle;
-    text-align: center;
-    font-size: large;
 }
 
 .output textbox2 {
