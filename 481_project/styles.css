@@ -179,14 +179,14 @@ body{
     padding: 1%;
 }
 
-.output textbox1 {
+.textbox1 {
     line-height: 50pt;
     vertical-align: middle;
     text-align: center;
     font-size: large;
 }
 
-.output textbox2 {
+.textbox2 {
     line-height: 50pt;
     vertical-align: middle;
     font-size: medium;
