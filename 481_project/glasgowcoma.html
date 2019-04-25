@@ -29,15 +29,16 @@
             var selectedColor = "rgb(143,188,143,0.35)";
             var goodColor = "rgb(144,238,144,0.35)";
             var comaColor = "rgb(255,255,200,0.50)";
-            var ageNum = "";
-            var ageUnit = "";
-            var age = ageNum + "," + ageUnit;
+            var ageNum = sessionStorage.age;
+            var ageUnit = sessionStorage.ageType;
+			var age = ageNum + "," + ageUnit;
+			checkIfUpdate();
 
             // Set all element colors based on defined incoming values
             $('body').css("background-color", bodyColor);
             $('body').css("color", textColor);
             $('.selection').css("background-color", defaultBackgroundColorA);
-            $('table').css("background-color", defaultBackgroundColor);
+            $('.gcTable').css("background-color", defaultBackgroundColor);
             $('.textbox').css("background-color", defaultBackgroundColor);
             $('.textbox').css("color", textColor);
             $('.textbox2').css("background-color", defaultBackgroundColor);
@@ -91,22 +92,34 @@
             $('.age-num').on('input', ageNumberChange);
 			$('.age-unit').change(function () {
                 $("select option:selected").each(function () {
-                    ageUnit = $(this).text();
-                });
+					ageUnit = $(this).text();
+				});
+				convertUnit();
 				age = ageNum + "," + ageUnit;
-				console.log("age: " + age);
+				sessionStorage.age = ageNum;
+				sessionStorage.ageType = ageUnit;
                 groupUpdate();
-            });
+			});
+			function convertUnit() {
+				if (ageUnit === "Months") {
+					ageUnit = "months";
+				} else if (ageUnit === "Years") {
+					ageUnit = "years";
+				} else if (ageUnit === "Days") {
+					ageUnit = "days";
+				}
+			}
             function ageNumberChange() {
-                ageNum = $(this).val();
+				ageNum = $(this).val();
+				convertUnit();
 				age = ageNum + "," + ageUnit;
-				console.log("age: " + age);
+				sessionStorage.age = ageNum;
+				sessionStorage.ageType = ageUnit;
                 groupUpdate();
             }
             function checkIfUpdate() {
                 var input = age.split(',');
                 if (input[0] != "" && input[1] != "") {
-					console.log("age: " + age);
                     groupUpdate();
                 }
 			}
@@ -114,10 +127,10 @@
             // Change verbal response fields based on age (<5 years)
             function groupUpdate() {
                 $('.group').each(function () {
-                    var input = age.split(',');
+					var input = age.split(',');
                     var num = parseInt(input[0]);
                     var unit = input[1].toString();
-                    if (unit === "Months" || unit === "Days") {
+                    if (unit === "months" || unit === "days") {
                         if (num >= 0 && num <= 23) {
                             $("#o1").text("Smiles or coos appropriately");
                             $("#o2").text("Cries and consolable");
@@ -125,7 +138,7 @@
                             $("#o4").text("Grunts or is agitated or restless");
                             $("#o5").text("No response");
                         }
-                    } else if (unit === "Years") {
+                    } else if (unit === "years") {
                         if (num >= 2 && num <= 5) {
                             $("#o1").text("Appropriate words or phrases");
                             $("#o2").text("Inappropriate words");
@@ -284,19 +297,19 @@
 				</td>
 				<td class="group">
 					<div class="selection">
-						<label id="o1">Oriented</label><input type="radio" name="group2" value="g2,o1,5"/>
+						<label id="o1"></label><input type="radio" name="group2" value="g2,o1,5"/>
 					</div>
 					<div class="selection">
-						<label id="o2">Confused conversation, but able to answer questions</label><input type="radio" name="group2" value="g2,o2,4"/>
+						<label id="o2"></label><input type="radio" name="group2" value="g2,o2,4"/>
 					</div>
 					<div class="selection">
-						<label id="o3">Inappropriate responses, words discernible</label><input type="radio" name="group2" value="g2,o3,3"/>
+						<label id="o3"></label><input type="radio" name="group2" value="g2,o3,3"/>
 					</div>
 					<div class="selection">
-						<label id="o4">Incomprehensible speech</label><input type="radio" name="group2" value="g2,o4,2"/>
+						<label id="o4"></label><input type="radio" name="group2" value="g2,o4,2"/>
 					</div>
 					<div class="selection">
-						<label id="o5">None</label><input type="radio" name="group2" value="g2,o5,1"/>
+						<label id="o5"></label><input type="radio" name="group2" value="g2,o5,1"/>
 					</div>
 				</td>
 			</tr>
