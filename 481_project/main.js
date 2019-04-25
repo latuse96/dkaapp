@@ -197,11 +197,13 @@ $(function () {
         alert(message);
     }
     $("#saveInfo").on("click", function(){
-        var birthWeight = parseFloat($('#bwLbs').val()) + (parseFloat($('#bwOz').val()))/16 ;
-        var CurrentWeight = parseFloat($('#cwLbs').val()) + parseFloat($('#cwOz').val())/16;
+        var birthWeight = sessionStorage.bwLbs + (sessionStorage.bwOz / 16);
+        
+        var CurrentWeight = sessionStorage.cwLbs + (sessionStorage.cwOz/16);
         $("#displayBirthWeight").val(birthWeight);
         $("#displayCurrentWeight").val(CurrentWeight);
         var difference = CurrentWeight - birthWeight;
+        $("#DifferenceOutput").val(difference);
         var PercentFromBirthWeight = (difference/birthWeight)* 100;
 
         if(PercentFromBirthWeight < 0){

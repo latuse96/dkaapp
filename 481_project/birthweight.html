@@ -10,25 +10,9 @@
             
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                     <script src="main.js"></script>
-
-                var difference = CurrentWeight - birthWeight;
-                $("#DifferenceOutput").val(difference);
-                var PercentFromBirthWeight = (difference/birthWeight) * 100;
-                if(PercentFromBirthWeight < 0){
-                    $("#DisplayOutput").val(PercentFromBirthWeight.toFixed(1));
-                    $('#DisplayOutput').css("color", "red");
-                }else{
-                    $("#DisplayOutput").val(PercentFromBirthWeight.toFixed(1));
-                
-                }
-            }
-            //calculatePercentage();
-            });
-
-            </script>
-            
+    
     </head>
-    <body>
+<body>
         <header>
                     <div class="header">
                         <!-- start buttons -->
@@ -115,14 +99,18 @@
     
     <div class = "displayWrapper">
         <h1> Percentage from Birthweight </h1><br>
-                
-                <label>From</label><br>
-                <label>Birth weight: </label> <input type="text" class="displayTextbox" id="displayBirthWeight" readonly value=""/><br>
-                <label>To</label><br>
-                <label>Current weight: </label><input type="text" class="displayTextbox" id="displayCurrentWeight" readonly value=""/><br>
-                <label>Percentage From Birth weight: </label> <input type="text" class="displayTextbox" name="Result" id="DisplayOutput" readonly value=""/><br>
-                
-        </div>  
+        <table>
+            <tr><td><label for="birthWeight">Birth Weight:</label>                
+                <td><input type="text" class="displayTextbox" id="displayBirthWeight" readonly value="" size="20"/><label>Lbs</label>
+            <tr><td><label for="currentWeigth">Current Weight:</label>
+                <input type="text" class="displayTextbox" id="displayCurrentWeight" readonly value="" size = "20"/><label>Lbs</label>
+            <tr><td><label for="difference">Difference:</label>
+                <input type="text" class="displayTextbox"  id="DifferenceOutput" readonly value="" size = "20"/><label>Lbs</label>
+            <tr><td><label for="percentage">%:</label>
+                <input type="text" class="displayTextbox" id="DisplayOutput" readonly value="" size = "20"/> 
+        </table>
+            
+</div>  
 
 </main>
 </body>
