@@ -22,15 +22,24 @@
     color:black;
 }
 
+.sectionWrapper{
+    padding-bottom: 10px;
+}
+
 
 input{
-    width: 50px;
+    width: 75px;
+    font-size: 18px;
 }
 
 .label{
     width: 54px;
     text-align: center;
     min-width: 50px;
+}
+
+.boxLabel{
+    font-size: 24px;
 }
 
 .inputWrapper{
