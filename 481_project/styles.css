@@ -169,6 +169,13 @@ body{
     padding: 1%;
 }
 
+.output textbox {
+    line-height: 50pt;
+    vertical-align: middle;
+    text-align: center;
+    font-size: large;
+}
+
 .output textbox2 {
     line-height: 50pt;
     vertical-align: middle;
