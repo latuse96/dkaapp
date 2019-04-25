@@ -14,14 +14,36 @@
                     
                     <script>
                         $(document).ready(function(){
-                            
-                        $("submit").on("click", function(){
-                        var birthWeight = parseInt($('#birthWeight').val());
-                        var CurrentWeight = parseInt($('#CurrentWeight').val());
-                        var PercentFromBirthWeight = Math.abs((birthWeight - CurrentWeight) / 100);
-                        $("#output").val(PercentFromBirthWeight);
+                       /*     
+                        $("#saveInfo").on("click", function(){
+                        var birthWeight = parseFloat($('#bwLbs').val());
+                        var CurrentWeight = parseFloat($('#cwLbs').val());
+                        var difference = bwLbs - cwLbs;
+                        var PercentFromBirthWeight = Math.abs((difference/birthWeight)* 100);
+
+                        $("#DisplayOutput").val(PercentFromBirthWeight.toFixed(1));
+                        $("#displayBirthWeight").val(birthWeight);
+                        $("#displayCurrentWeight").val(CurrentWeight);
+                        });*/
+                    
+                    function calculatePercentage(){
+                        
+                        var birthWeight = 9;
+                        var CurrentWeight= 25;
+                        
+                        var difference = birthWeight - CurrentWeight;
+                        var PercentFromBirthWeight = Math.abs((difference/birthWeight)* 100);
+                        
+                        $("#DisplayOutput").val(PercentFromBirthWeight.toFixed(1) + " %");
+                        $("#displayBirthWeight").val(birthWeight);
+                        $("#displayCurrentWeight").val(CurrentWeight);
+                        
+                    }
+                    calculatePercentage();
                     });
-                    });
+
+                    
+                    
                     </script>
 </head>
     <body>
@@ -105,11 +127,13 @@
     
     <div class = "displayWrapper">
         <h1> Percentage from Birthweight </h1><br>
-                <label>Result: </label> <input type="text" class="displayTextbox" name="Result" id="DisplayOutput" readonly value=""/>%<br>
+                
                 <label>From</label><br>
                 <label>Birth weight: </label> <input type="text" class="displayTextbox" id="displayBirthWeight" readonly value=""/><br>
                 <label>To</label><br>
-                <label>Current weight: </label><input type="text" class="displayTextbox" id="displayCurrentWeight" readonly value=""/>
+                <label>Current weight: </label><input type="text" class="displayTextbox" id="displayCurrentWeight" readonly value=""/><br>
+                <label>Percentage From Birth weight: </label> <input type="text" class="displayTextbox" name="Result" id="DisplayOutput" readonly value=""/><br>
+                
         </div>  
 
 </main>

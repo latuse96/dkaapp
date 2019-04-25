@@ -162,13 +162,14 @@ body{
 /* START birthWeight Styles */
 
   .displayTextbox{
-    width: 200px;
+    width: 100px;
     padding: 8px;
     margin: 4px 0;
     border: 2px solid #aaa;
     border-radius: 10px;
     box-sizing: border-box;
     margin-bottom: 10px;
+    font-size: large;
   }
   label{
     font-family: 'Varela Round', sans-serif;
