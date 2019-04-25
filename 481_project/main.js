@@ -196,4 +196,14 @@ $(function () {
         $("#infoButton").click();
         alert(message);
     }
+    $("#saveInfo").on("click", function(){
+        var birthWeight = parseFloat($('#bwLbs').val());
+        var CurrentWeight = parseFloat($('#cwLbs').val());
+        var difference = bwLbs - cwLbs;
+        var PercentFromBirthWeight = Math.abs((difference/birthWeight)* 100);
+
+        $("#DisplayOutput").val(PercentFromBirthWeight.toFixed(1));
+        $("#displayBirthWeight").val(birthWeight);
+        $("#displayCurrentWeight").val(CurrentWeight);
+        });
 })
