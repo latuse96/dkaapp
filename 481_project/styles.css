@@ -206,7 +206,7 @@ body{
 /* START birthWeight Styles */
 
   .displayTextbox{
-    width: 75px;
+    width: 100px;
     padding: 8px;
     margin: 4px 0;
     border: 2px solid #aaa;
@@ -221,8 +221,8 @@ body{
     align-content: left;
   }
   .displayWrapper {
-    width: 30%;
-    height: 350px;
+    width: 40%;
+    height: 40%;
     padding: 13px;
     background-color: burlywood;
     margin: auto;
