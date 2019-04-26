@@ -215,13 +215,14 @@ $(document).ready(function () {
         });
     
     // START Glasgow Coma Javascript
-    var bodyColor = "rgb(0,0,0)";
-    var textColor = "rgb(255,255,255)";
-    var defaultBackgroundColorA = "rgb(211,211,211,0)";
-    var defaultBackgroundColor = "rgb(211,211,211,0.35)";
-    var selectedColor = "rgb(143,188,143,0.35)";
-    var goodColor = "rgb(144,238,144,0.35)";
-    var comaColor = "rgb(255,255,200,0.50)";
+    // Page colors set here
+    var bodyColor = "white";
+    var textColor = "black";
+    var sectionBackgroundColorA = "white";
+    var sectionBackgroundColor = "white";
+    var selectedColor = "burlywood";
+    var goodColor = "rgb(144,238,144,0.75)";
+    var comaColor = "rgb(255,255,0,0.75)";
     var ageNum = sessionStorage.age;
     var ageUnit = sessionStorage.ageType;
     var age = ageNum + "," + ageUnit;
@@ -230,14 +231,14 @@ $(document).ready(function () {
     // Set all element colors based on defined incoming values
     $('.gcBody').css("background-color", bodyColor);
     $('.gcBody').css("color", textColor);
-    $('.selection').css("background-color", defaultBackgroundColorA);
-    $('.gcTable').css("background-color", defaultBackgroundColor);
-    $('.textbox').css("background-color", defaultBackgroundColor);
-    $('.textbox').css("color", textColor);
-    $('.textbox2').css("background-color", defaultBackgroundColor);
-    $('.textbox2').css("color", textColor);
+    $('.selection').css("background-color", sectionBackgroundColorA);
+    $('.gcTable').css("background-color", sectionBackgroundColor);
+    $('.gcNum').css("background-color", sectionBackgroundColor);
+    $('.gcNum').css("color", textColor);
+    $('.gcResult').css("background-color", sectionBackgroundColor);
+    $('.gcResult').css("color", textColor);
 
-    function calculate() {
+    function gcCalculate() {
         var g1 = getGroupValues("group1").split(',');
         var g2 = getGroupValues("group2").split(',');
         var g3 = getGroupValues("group3").split(',');
@@ -253,8 +254,8 @@ $(document).ready(function () {
             $('#output').css("background-color", goodColor);
             $('#outputResult').css("background-color", goodColor);
         } else {
-            $('#output').css("background-color", defaultBackgroundColor);
-            $('#outputResult').css("background-color", defaultBackgroundColor);
+            $('#output').css("background-color", sectionBackgroundColor);
+            $('#outputResult').css("background-color", sectionBackgroundColor);
         }
         if (value >= 8) {
             $('#outputResult').val("Good chance for recovery");
@@ -353,22 +354,28 @@ $(document).ready(function () {
         var $radio = $(this).find('input:radio');
         if (!$(e.target).is('input:radio')) {
             $radio.prop('checked', !$radio.prop('checked'));
-            if (($radio).is(':checked')) {
+            if ($radio.is(':checked')) {
                 if ($(e.target).is('label')) {
-                    $(e.target).parent().parent().children().css("background-color", defaultBackgroundColorA);
+                    $(e.target).parent().parent().children().css("background-color", sectionBackgroundColorA);
                     $(e.target).parent().css("background-color", selectedColor);
                 } else {
-                    $(e.target).parent().children().css("background-color", defaultBackgroundColorA);
+                    $(e.target).parent().children().css("background-color", sectionBackgroundColorA);
                     $(e.target).css("background-color", selectedColor);
                 }
             } else {
-                $(e.target).parent().children().css("background-color", defaultBackgroundColorA);
+                if ($(e.target).is('label')) {
+                    $(e.target).parent().parent().children().css("background-color", sectionBackgroundColorA);
+                    $(e.target).parent().css("background-color", sectionBackgroundColorA);
+                } else {
+                    $(e.target).parent().children().css("background-color", sectionBackgroundColorA);
+                    $(e.target).css("background-color", sectionBackgroundColorA);
+                }
             }
         } else {
-            $(e.target).parent().parent().children().css("background-color", defaultBackgroundColorA);
+            $(e.target).parent().parent().children().css("background-color", sectionBackgroundColorA);
             $(e.target).parent().css("background-color", selectedColor);
         }
-        calculate();
+        gcCalculate();
     });
     // END Glasgow Coma Javascript
 })
