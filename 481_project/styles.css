@@ -173,24 +173,26 @@ body{
     width: 100%;
 }
 
-.output {
+.gcOutput {
     font-size: large;
-    display: inline;
-    padding: 1%;
+    width: 100%;
+    text-align: center;
 }
 
-.textbox1 {
+.gcOutput .gcNum {
     line-height: 50pt;
     vertical-align: middle;
     text-align: center;
     font-size: large;
+    width: 10%;
 }
 
-.textbox2 {
+.gcOutput .gcResult {
     line-height: 50pt;
     vertical-align: middle;
     font-size: medium;
     text-align: center;
+    width: 40%;
 }
 /* END Glasgow Coma Style */
 .tg .tg-baqh{text-align:center;vertical-align:top}
