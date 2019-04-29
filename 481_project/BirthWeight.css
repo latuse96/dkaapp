@@ -12,33 +12,33 @@ output{
     align-content: left;
   }
   .displayWrapper {
-    width: 45%;
-    height: 45%;
+    width: 80%;
     padding: 13px;
     background-color: burlywood;
     margin: auto;
     font-family: 'Varela Round', sans-serif;
-    font-size: 100%;
+    font-size: 1vw ;
     border-radius: 10px;
+    border: 2px solid black;
+    
 }
 h1{
     font-family: 'Varela Round', sans-serif;
     font-size: 250%;
     text-align: center;
 }
-
-body {
-    width: 100%; 
-    font-family: 'Varela Round', sans-serif;
-  }
-          
-  .container > div {
+       
+.container > div {
     border-radius: 5px;
     padding: 5px 0;
     
-  }   .container {
+  } .container {
     display: grid;
-    align-content: space-between;
+    /*align-content: space-between;*/
     justify-content: center;
-    grid-template-columns: 275px 80px 100px 40px 50px;
+    /*grid-template-columns: 275px 80px 100px 40px 50px;*/
+    grid-template-columns: 40% 13% 13% 8% 8%;
   } 
+  .UOM{
+      color:rgb(252, 245, 236);
+  }
