@@ -434,13 +434,18 @@ function computePercentage(){
         groupUpdate();
     }
     function checkIfUpdate() {
+        console.log(sessionStorage.age + " " + sessionStorage.ageType);
         var input = age.split(',');
         if (input[0] != "" && input[1] != "") {
             if (sessionStorage.age == undefined || sessionStorage.ageType == undefined) {
                 infoPrompt("Please enter the patient's age");
             }
-            groupUpdate();
+        } else {
+            if (sessionStorage.age == "" || sessionStorage.ageType == "") {
+                infoPrompt("Please enter the patient's age");
+            }
         }
+        groupUpdate();
     }
 
     // Change verbal response fields based on age (<5 years)
