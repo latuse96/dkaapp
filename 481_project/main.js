@@ -327,7 +327,10 @@ $(document).ready(function () {
     var ageNum = sessionStorage.age;
     var ageUnit = sessionStorage.ageType;
     var age = ageNum + "," + ageUnit;
-    checkIfUpdate();
+    if ($(document).find("title").text() == "Glasgow Coma Scale") {
+        checkIfUpdate();
+    }
+
 
     // Set all element colors based on defined incoming values
     $('.gcBody').css("background-color", bodyColor);
@@ -415,6 +418,9 @@ $(document).ready(function () {
     function checkIfUpdate() {
         var input = age.split(',');
         if (input[0] != "" && input[1] != "") {
+            if (sessionStorage.age == undefined || sessionStorage.ageType == undefined) {
+                infoPrompt("Please enter the patient's age");
+            }
             groupUpdate();
         }
     }
