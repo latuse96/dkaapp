@@ -202,7 +202,7 @@ main{
     vertical-align: middle;
     text-align: center;
     font-size: large;
-    width: 10%;
+    width: 20%;
 }
 
 .gcOutput .gcResult {
@@ -210,7 +210,7 @@ main{
     vertical-align: middle;
     font-size: medium;
     text-align: center;
-    width: 40%;
+    width: 70%;
 }
 /* END Glasgow Coma Style */
 .tg .tg-baqh{text-align:center;vertical-align:top}
