@@ -267,7 +267,7 @@ function computeDifference(){
             $("#DifferenceLbs").val(resultLbs);
             $("#DifferenceOz").val(resultOz.toFixed(1));
         }
-    var resultKg  = ((parseFloat(resultLbs) + (parseFloat(resultOz) * 0.0625)) * 0.45359237).toFixed(3);
+    var resultKg  = ((parseFloat(resultLbs) + (parseFloat(resultOz) * 0.0625)) * 0.45359237).toFixed(2);
             $("#DifferenceKg").val(resultKg);
 
     var difference = (parseFloat(resultLbs) + (parseFloat(resultOz) * 0.0625)).toFixed(2);
@@ -281,13 +281,15 @@ function computeDifference(){
             $("#DisplayPercentage").val(PercentFromBirthWeight);
         }
 }
+
         if ($(document).find("title").text() == "BirthWeight") {
             checkIfBwUpdate();
-}
+        }
+
 function checkIfBwUpdate() {  
-if ( sessionStorage.cwKg == undefined || sessionStorage.cwKg == "" || sessionStorage.bwKg == undefined || sessionStorage.bwKg == "") {
-        infoPrompt("Please enter the patient's weight Information"); 
-    } 
+        if ( sessionStorage.cwKg == undefined || sessionStorage.cwKg == "" || sessionStorage.bwKg == undefined || sessionStorage.bwKg == "") {
+                infoPrompt("Please enter the patient's weight information"); 
+            } 
     bwOnLoad();
 }
 /*
