@@ -10,4 +10,8 @@ $(function() {
             infoPrompt("Please enter the patient's weight");
         }
     })
+
+    $("#dkaPrintButton").click(function() {
+        window.print();
+    })
 })
