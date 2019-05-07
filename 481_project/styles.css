@@ -311,16 +311,15 @@ h1{
 */
 
 @media print {
-    html {
-        overflow: hidden;
-    }
-
     .element::-webkit-scrollbar { 
         width: 0 !important 
     }
 
     ::-webkit-scrollbar {
         display: none;
+    }
+    body {
+        transform: rotate(90deg)
     }
 
     header {
@@ -332,11 +331,14 @@ h1{
     }
 
     #dkaTable {
-        width: 75%;
+        width: 50%;
+        page-break-inside: avoid;
+        overflow: visible;
+        position: static;
+        margin-top: 250px;
     }
 
     @page {
-        size: landscape;
     }
 }
 
