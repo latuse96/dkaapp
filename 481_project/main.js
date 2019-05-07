@@ -197,8 +197,9 @@ $(document).ready(function () {
         $("#infoButton").click();
         alert(message);
     }
+
     // START Birth Weight Javascript
-    displayWeights = function (){
+    displayWeights = function () {
         //Displays Birth Weight
         $("#display_bwlbs").val(sessionStorage.bwLbs);
         $("#display_bwOz").val(sessionStorage.bwOz);
@@ -209,49 +210,45 @@ $(document).ready(function () {
         $("#display_cwOz").val(sessionStorage.cwOz);
         $("#display_cwkgs").val(sessionStorage.cwKg);
     }
-    
-    computeDifference = function (){
+    computeDifference = function () {
         var cwLbs = sessionStorage.cwLbs;
         var cwOz = sessionStorage.cwOz;
         var bwLbs = sessionStorage.bwLbs;
         var bwOz = sessionStorage.bwOz;
-    
-            if(bwOz > cwOz){
-                cwLbs =parseFloat(cwLbs) - parseInt(1);
-                cwOz =parseFloat(cwOz) + parseInt(16);
-                var resultOz = parseFloat(cwOz) - parseFloat(bwOz);
-                var resultLbs = parseFloat(cwLbs) - parseFloat(bwLbs);
-                $("#DifferenceLbs").val(resultLbs);
-                $("#DifferenceOz").val(resultOz.toFixed(1));
-                
-            }else if(bwOz < cwOz){
-                resultOz = parseFloat(cwOz) - parseFloat(bwOz);
-                resultLbs =parseFloat(cwLbs) - parseFloat(bwLbs);
-                $("#DifferenceLbs").val(resultLbs);
-                $("#DifferenceOz").val(resultOz.toFixed(1));
-            }
+        if (bwOz > cwOz) {
+            cwLbs = parseFloat(cwLbs) - parseInt(1);
+            cwOz = parseFloat(cwOz) + parseInt(16);
+            var resultOz = parseFloat(cwOz) - parseFloat(bwOz);
+            var resultLbs = parseFloat(cwLbs) - parseFloat(bwLbs);
+            $("#DifferenceLbs").val(resultLbs);
+            $("#DifferenceOz").val(resultOz.toFixed(1));
+        } else if (bwOz < cwOz) {
+            resultOz = parseFloat(cwOz) - parseFloat(bwOz);
+            resultLbs = parseFloat(cwLbs) - parseFloat(bwLbs);
+            $("#DifferenceLbs").val(resultLbs);
+            $("#DifferenceOz").val(resultOz.toFixed(1));
+        }
         var resultKg  = ((parseFloat(resultLbs) + (parseFloat(resultOz) * 0.0625)) * 0.45359237).toFixed(2);
-            $("#DifferenceKg").val(resultKg);
+        $("#DifferenceKg").val(resultKg);
 
         var difference = (parseFloat(resultLbs) + (parseFloat(resultOz) * 0.0625)).toFixed(2);
         var birthWeight = (parseFloat(sessionStorage.bwLbs) + parseFloat(sessionStorage.bwOz) * 0.0625).toFixed(2);
         var PercentFromBirthWeight = ((parseFloat(difference) / parseFloat(birthWeight)) * 100).toFixed(1);
     
-            if(PercentFromBirthWeight < 0){
-                $("#DisplayPercentage").val(PercentFromBirthWeight);
-                $('#DisplayPercentage').css("color", "red");
-            }else{
-                $("#DisplayPercentage").val(PercentFromBirthWeight);
-            }
-}
+        if (PercentFromBirthWeight < 0) {
+            $("#DisplayPercentage").val(PercentFromBirthWeight);
+            $('#DisplayPercentage').css("color", "red");
+        } else {
+            $("#DisplayPercentage").val(PercentFromBirthWeight);
+        }
+    }
 
-    
     // START Glasgow Coma Javascript
     // Page colors set here
     var bodyColor = "white";
     var textColor = "black";
-    var sectionBackgroundColorA = "white";
-    var sectionBackgroundColor = "white";
+    var sectionBackgroundColorA = "rgb(242,229,212)";
+    var sectionBackgroundColor = "rgb(242,229,212)";
     var selectedColor = "burlywood";
     var goodColor = "rgb(144,238,144,0.75)";
     var comaColor = "rgb(255,255,0,0.75)";
