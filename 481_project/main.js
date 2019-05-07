@@ -164,6 +164,8 @@ $(document).ready(function () {
         sessionStorage.bwKg = $("#bwKg").val();
         sessionStorage.ageType = $("#ageType").children("option:selected").val();
         populateTable();
+        displayWeights();
+        computeDifference();
     };
 
     populateTable = function() {
@@ -196,153 +198,53 @@ $(document).ready(function () {
         alert(message);
     }
     // START Birth Weight Javascript
-    function displayWeights(){
-            // $("#displayBirthWeight").val(birthWeight.toFixed(1));
-            $("#display_bwlbs").val(sessionStorage.bwLbs);
-            $("#display_bwOz").val(sessionStorage.bwOz);
-            $("#display_bwkgs").val(sessionStorage.bwKg);
+    displayWeights = function (){
+        //Displays Birth Weight
+        $("#display_bwlbs").val(sessionStorage.bwLbs);
+        $("#display_bwOz").val(sessionStorage.bwOz);
+        $("#display_bwkgs").val(sessionStorage.bwKg);
 
-            //$("#displayCurrentWeight").val(currentWeight.toFixed(1));
-            $("#display_cwlbs").val(sessionStorage.cwLbs);
-            $("#display_cwOz").val(sessionStorage.cwOz);
-            $("#display_cwkgs").val(sessionStorage.cwKg);
-
+        //Displays Current Weight
+        $("#display_cwlbs").val(sessionStorage.cwLbs);
+        $("#display_cwOz").val(sessionStorage.cwOz);
+        $("#display_cwkgs").val(sessionStorage.cwKg);
     }
     
+    computeDifference = function (){
+        var cwLbs = sessionStorage.cwLbs;
+        var cwOz = sessionStorage.cwOz;
+        var bwLbs = sessionStorage.bwLbs;
+        var bwOz = sessionStorage.bwOz;
     
-    
-    bwOnLoad();
-    
-    function bwOnLoad (){
-        displayWeights();
-        computeDifference();
-        //computePercentage();
-        
-        /*
-        if(sessionStorage.bwOz === "" || sessionStorage.bwOz === null || sessionStorage.bwOz==="undefined")
-        {
-            var birthWeight = sessionStorage.bwLbs;
-        }else{
-            var  birthWeight = parseFloat(sessionStorage.bwLbs) + parseFloat(sessionStorage.bwOz * 0.0625);
-        }
-              
-        if(sessionStorage.cwOz === "" || sessionStorage.cwOz === null || sessionStorage.cwOz==="undefined")
-        {
-            var currentWeight = sessionStorage.cwLbs;
-        }else{
-            var currentWeight = parseFloat(sessionStorage.cwLbs) +parseFloat(sessionStorage.cwOz * 0.0625);
-        }
-        var birthWeight = parseFloat(sessionStorage.bwLbs) + parseFloat(sessionStorage.bwOz * 0.0625);
-        var currentWeight = parseFloat(sessionStorage.cwLbs) +parseFloat(sessionStorage.cwOz * 0.0625);
-        var difference = currentWeight - birthWeight;
-
-            //$("#DifferenceOutput").val(difference.toFixed(1));
-
-        var PercentFromBirthWeight = (difference/birthWeight)* 100;
-        
-        if(PercentFromBirthWeight < 0){
-            $("#DisplayPercentage").val(PercentFromBirthWeight.toFixed(1));
-            $('#DisplayPercentage').css("color", "red");
-        }else{
-            $("#DisplayPercentage").val(PercentFromBirthWeight.toFixed(1));
-        }*/
-}
-function computeDifference(){
-    var cwLbs = sessionStorage.cwLbs;
-    var cwOz = sessionStorage.cwOz;
-    var bwLbs = sessionStorage.bwLbs;
-    var bwOz = sessionStorage.bwOz;
-    
-        if(bwOz > cwOz){
-            cwLbs =parseFloat(cwLbs) - parseInt(1);
-            cwOz =parseFloat(cwOz) + parseInt(16);
-            var resultOz = parseFloat(cwOz) - parseFloat(bwOz);
-            var resultLbs = parseFloat(cwLbs) - parseFloat(bwLbs);
-            $("#DifferenceLbs").val(resultLbs);
-            $("#DifferenceOz").val(resultOz.toFixed(1));
-            
-        }else if(bwOz < cwOz){
-            resultOz = parseFloat(cwOz) - parseFloat(bwOz);
-            resultLbs =parseFloat(cwLbs) - parseFloat(bwLbs);
-            $("#DifferenceLbs").val(resultLbs);
-            $("#DifferenceOz").val(resultOz.toFixed(1));
-        }
-    var resultKg  = ((parseFloat(resultLbs) + (parseFloat(resultOz) * 0.0625)) * 0.45359237).toFixed(2);
+            if(bwOz > cwOz){
+                cwLbs =parseFloat(cwLbs) - parseInt(1);
+                cwOz =parseFloat(cwOz) + parseInt(16);
+                var resultOz = parseFloat(cwOz) - parseFloat(bwOz);
+                var resultLbs = parseFloat(cwLbs) - parseFloat(bwLbs);
+                $("#DifferenceLbs").val(resultLbs);
+                $("#DifferenceOz").val(resultOz.toFixed(1));
+                
+            }else if(bwOz < cwOz){
+                resultOz = parseFloat(cwOz) - parseFloat(bwOz);
+                resultLbs =parseFloat(cwLbs) - parseFloat(bwLbs);
+                $("#DifferenceLbs").val(resultLbs);
+                $("#DifferenceOz").val(resultOz.toFixed(1));
+            }
+        var resultKg  = ((parseFloat(resultLbs) + (parseFloat(resultOz) * 0.0625)) * 0.45359237).toFixed(2);
             $("#DifferenceKg").val(resultKg);
 
-    var difference = (parseFloat(resultLbs) + (parseFloat(resultOz) * 0.0625)).toFixed(2);
-    var birthWeight = (parseFloat(sessionStorage.bwLbs) + parseFloat(sessionStorage.bwOz) * 0.0625).toFixed(2);
-    var PercentFromBirthWeight = ((parseFloat(difference) / parseFloat(birthWeight)) * 100).toFixed(1);
+        var difference = (parseFloat(resultLbs) + (parseFloat(resultOz) * 0.0625)).toFixed(2);
+        var birthWeight = (parseFloat(sessionStorage.bwLbs) + parseFloat(sessionStorage.bwOz) * 0.0625).toFixed(2);
+        var PercentFromBirthWeight = ((parseFloat(difference) / parseFloat(birthWeight)) * 100).toFixed(1);
     
-        if(PercentFromBirthWeight < 0){
-            $("#DisplayPercentage").val(PercentFromBirthWeight);
-            $('#DisplayPercentage').css("color", "red");
-        }else{
-            $("#DisplayPercentage").val(PercentFromBirthWeight);
-        }
+            if(PercentFromBirthWeight < 0){
+                $("#DisplayPercentage").val(PercentFromBirthWeight);
+                $('#DisplayPercentage').css("color", "red");
+            }else{
+                $("#DisplayPercentage").val(PercentFromBirthWeight);
+            }
 }
 
-        if ($(document).find("title").text() == "BirthWeight") {
-            checkIfBwUpdate();
-        }
-
-function checkIfBwUpdate() {  
-        if ( sessionStorage.cwKg == undefined || sessionStorage.cwKg == "" || sessionStorage.bwKg == undefined || sessionStorage.bwKg == "") {
-                infoPrompt("Please enter the patient's weight information"); 
-            } 
-    bwOnLoad();
-}
-/*
-function computePercentage(){
-    var birthWeight = (parseFloat(sessionStorage.bwLbs) + parseFloat(sessionStorage.bwOz) * 0.0625).toFixed(2);
-    console.log(birthWeight);
-    var currentWeight = (parseFloat(sessionStorage.cwLbs) + parseFloat(sessionStorage.cwOz) * 0.0625).toFixed(2);
-    console.log(currentWeight);
-    var difference = (parseFloat(currentWeight) - parseFloat(birthWeight)).toFixed(2);
-    console.log(difference);
-        //$("#DifferenceOutput").val(difference.toFixed(1));
-
-    var PercentFromBirthWeight = ((parseFloat(difference) / parseFloat(birthWeight)) * 100).toFixed(2);
-    console.log(PercentFromBirthWeight);
-    if(PercentFromBirthWeight < 0){
-        $("#DisplayPercentage").val(PercentFromBirthWeight);
-        $('#DisplayPercentage').css("color", "red");
-    }else{
-        $("#DisplayPercentage").val(PercentFromBirthWeight);
-    }
-}*/
-    
-/*
-    $("#saveInfo").on("click", function(){
-        displayWeights();
-        if(sessionStorage.bwOz === "" || sessionStorage.bwOz === null || sessionStorage.bwOz==="undefined")
-        {
-            var birthWeight = sessionStorage.bwLbs;
-        }else{
-            var  birthWeight = parseFloat(sessionStorage.bwLbs) + parseFloat(sessionStorage.bwOz * 0.0625);
-        }
-              
-        if(sessionStorage.cwOz === "" || sessionStorage.cwOz === null || sessionStorage.cwOz==="undefined")
-        {
-            var currentWeight = sessionStorage.cwLbs;
-        }else{
-            var currentWeight = parseFloat(sessionStorage.cwLbs) +parseFloat(sessionStorage.cwOz * 0.0625);
-        }
-            
-           
-        var difference = currentWeight - birthWeight;
-            $("#DifferenceOutput").val(difference.toFixed(1));
-
-        var PercentFromBirthWeight = (difference/birthWeight)* 100;
-        
-        if(PercentFromBirthWeight < 0){
-            $("#DisplayPercentage").val(PercentFromBirthWeight.toFixed(1));
-            $('#DisplayPercentage').css("color", "red");
-        }else{
-            $("#DisplayPercentage").val(PercentFromBirthWeight.toFixed(1));
-        }
-
-        });*/
     
     // START Glasgow Coma Javascript
     // Page colors set here
