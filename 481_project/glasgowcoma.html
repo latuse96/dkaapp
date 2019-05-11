@@ -136,20 +136,22 @@
 					<label>Verbal Response</label>
 				</td>
 				<td class="group">
-					<div class="selection">
-						<label id="o1"></label><input type="radio" name="group2" value="g2,o1,5"/>
-					</div>
-					<div class="selection">
-						<label id="o2"></label><input type="radio" name="group2" value="g2,o2,4"/>
-					</div>
-					<div class="selection">
-						<label id="o3"></label><input type="radio" name="group2" value="g2,o3,3"/>
-					</div>
-					<div class="selection">
-						<label id="o4"></label><input type="radio" name="group2" value="g2,o4,2"/>
-					</div>
-					<div class="selection">
-						<label id="o5"></label><input type="radio" name="group2" value="g2,o5,1"/>
+					<div class="group2">
+						<div class="selection">
+							<label id="o1"></label><input type="radio" name="group2" value="g2,o1,5"/>
+						</div>
+						<div class="selection">
+							<label id="o2"></label><input type="radio" name="group2" value="g2,o2,4"/>
+						</div>
+						<div class="selection">
+							<label id="o3"></label><input type="radio" name="group2" value="g2,o3,3"/>
+						</div>
+						<div class="selection">
+							<label id="o4"></label><input type="radio" name="group2" value="g2,o4,2"/>
+						</div>
+						<div class="selection">
+							<label id="o5"></label><input type="radio" name="group2" value="g2,o5,1"/>
+						</div>
 					</div>
 				</td>
 			</tr>
@@ -160,32 +162,58 @@
 					<label>Motor Response</label>
 				</td>
 				<td class="group">
-					<div class="selection">
-						<label>Obeys commands for movement</label><input type="radio" name="group3" value="g3,o1,6"/>
-					</div>
-					<div class="selection">
-						<label>Purposful movement to painful stimulus</label><input type="radio" name="group3" value="g3,o2,5"/>
-					</div>
-					<div class="selection">
-						<label>Withdraws from pain</label><input type="radio" name="group3" value="g3,o3,4"/>
-					</div>
-					<div class="selection">
-						<label>Abnormal (spastic) flexion, decorticate posture</label><input type="radio" name="group3" value="g3,o4,3"/>
-					</div>
-					<div class="selection">
-						<label>Extensor (rigid) response, decerebrate posture</label><input type="radio" name="group3" value="g3,o5,2"/>
-					</div>
-					<div class="selection">
-						<label>None</label><input type="radio" name="group3" value="g3,o6,1"/>
+					<div class="group3">
+						<div class="selection">
+							<label>Obeys commands for movement</label><input type="radio" name="group3" value="g3,o1,6"/>
+						</div>
+						<div class="selection">
+							<label>Purposful movement to painful stimulus</label><input type="radio" name="group3" value="g3,o2,5"/>
+						</div>
+						<div class="selection">
+							<label>Withdraws from pain</label><input type="radio" name="group3" value="g3,o3,4"/>
+						</div>
+						<div class="selection">
+							<label>Abnormal (spastic) flexion, decorticate posture</label><input type="radio" name="group3" value="g3,o4,3"/>
+						</div>
+						<div class="selection">
+							<label>Extensor (rigid) response, decerebrate posture</label><input type="radio" name="group3" value="g3,o5,2"/>
+						</div>
+						<div class="selection">
+							<label>None</label><input type="radio" name="group3" value="g3,o6,1"/>
+						</div>
 					</div>
 				</td>
 			</tr>
 		</table>
 	</form>
-	<div class="gcOutput">
-		<input type="text" class="gcNum" name="outputValue" id="output" readonly value="0"/>
-		<input type="text" class="gcResult" name="result" id="outputResult" readonly value=""/>
-	</div>
+	<form>
+		<div class="gcResultLabel">
+			<br>
+			<label>Coma Scale Results</label>
+		</div>
+		<div class="gcOutput">
+			<input type="text" class="gcNum" name="outputValue" id="output" readonly value="0"/>
+			<input type="text" class="gcResult" name="result" id="outputResult" readonly value=""/>
+		</div>
+		<table class="gcTable">
+			<tr>
+				<td class="section">
+					<label>Coma Score Correlation</label>
+				</td>
+				<td class="group">
+					<div class="gcCorrelation">
+						<label id="cat1">13 or higher: mild brain injury</label>
+					</div>
+					<div class="gcCorrelation">
+						<label id="cat2">9 to 12: moderate injury</label>
+					</div>
+					<div class="gcCorrelation">
+						<label id="cat3">8 or less: severe brain injury</label>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</form>
 </main>	
 </body>
 </html>

@@ -259,7 +259,6 @@ $(document).ready(function () {
         checkIfUpdate();
     }
 
-
     // Set all element colors based on defined incoming values
     $('.gcBody').css("background-color", bodyColor);
     $('.gcBody').css("color", textColor);
@@ -269,6 +268,7 @@ $(document).ready(function () {
     $('.gcNum').css("color", textColor);
     $('.gcResult').css("background-color", sectionBackgroundColor);
     $('.gcResult').css("color", textColor);
+    $('.gc')
 
     function gcCalculate() {
         var g1 = getGroupValues("group1").split(',');
@@ -282,12 +282,31 @@ $(document).ready(function () {
         if (value >= 3 && value < 8) {
             $('#output').css("background-color", comaColor);
             $('#outputResult').css("background-color", comaColor);
+            $('#cat1').css("background-color", sectionBackgroundColor);
+            $('#cat2').css("background-color", sectionBackgroundColor);
+            $('#cat3').css("background-color", comaColor);
         } else if (value >= 8) {
             $('#output').css("background-color", goodColor);
             $('#outputResult').css("background-color", goodColor);
+            if (value >= 13) {
+                $('#cat1').css("background-color", goodColor);
+                $('#cat2').css("background-color", sectionBackgroundColor);
+                $('#cat3').css("background-color", sectionBackgroundColor);
+            } else if (value >= 9 && value <= 12) {
+                $('#cat1').css("background-color", sectionBackgroundColor);
+                $('#cat2').css("background-color", comaColor);
+                $('#cat3').css("background-color", sectionBackgroundColor);
+            } else {
+                $('#cat1').css("background-color", sectionBackgroundColor);
+                $('#cat2').css("background-color", sectionBackgroundColor);
+                $('#cat3').css("background-color", comaColor);
+            }
         } else {
             $('#output').css("background-color", sectionBackgroundColor);
             $('#outputResult').css("background-color", sectionBackgroundColor);
+            $('#cat1').css("background-color", sectionBackgroundColor);
+            $('#cat2').css("background-color", sectionBackgroundColor);
+            $('#cat3').css("background-color", comaColor);
         }
         if (value >= 8) {
             $('#outputResult').val("Good chance for recovery");
@@ -299,7 +318,7 @@ $(document).ready(function () {
             $('#outputResult').val("");
         }
         if (value >= 3) {
-            $('#output').val(value);
+            $('#output').val(value + "/15");
         } else {
             $('#output').val(0);
         }
