@@ -285,6 +285,11 @@ main{
     display: block;
 }
 
+#infoPrompt {
+    color: red;
+    font-size: 30px;
+}
+
 /* START birthWeight Styles */
 /*
   .displayTextbox{

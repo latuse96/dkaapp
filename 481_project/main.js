@@ -155,6 +155,7 @@ $(document).ready(function () {
     });
 
     saveInfo = function () {
+        $("#infoPrompt").attr("hidden", true);
         sessionStorage.cwLbs = $("#cwLbs").val();
         sessionStorage.cwOz = $("#cwOz").val();
         sessionStorage.cwKg = $("#cwKg").val();
@@ -195,7 +196,7 @@ $(document).ready(function () {
 
     infoPrompt = function(message) {
         $("#infoButton").click();
-        alert(message);
+        $("#infoPrompt").attr("hidden", false).text(message);
     }
 
     // START Birth Weight Javascript
