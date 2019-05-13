@@ -242,7 +242,7 @@ main{
 }
 
 .gcResultLabel {
-    text-align: left;
+    text-align: middle;
     font-size: 5vw;
 }
 
@@ -262,7 +262,7 @@ main{
     text-align: left;
     word-wrap: break-word;
     word-break: break-all;
-    width: 79vw;
+    width: 75vw;
     font-size: 5vw;
 }
 

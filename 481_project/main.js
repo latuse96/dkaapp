@@ -339,16 +339,6 @@ $(document).ready(function () {
 
     // Functionality for age input collection
     $('.age-num').on('input', ageNumberChange);
-    /* $('.age-unit').change(function () {
-        $("select option:selected").each(function () {
-            ageUnit = $(this).text();
-        });
-        convertUnit();
-        age = ageNum + "," + ageUnit;
-        sessionStorage.age = ageNum;
-        sessionStorage.ageType = ageUnit;
-        groupUpdate();
-    });*/
     $('input:radio[name=age]').change(function () {
         ageUnit = $(this).val();
         convertUnit();

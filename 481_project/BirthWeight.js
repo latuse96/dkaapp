@@ -1,6 +1,6 @@
 $(function() {
     if(sessionStorage.cwKg === undefined || sessionStorage.cwKg === "" || sessionStorage.bwKg === undefined || sessionStorage.bwKg === "") {
-        infoPrompt("Please enter the patient's weight");
+        infoPrompt();
     } else {
         displayWeights();
         computeDifference(); 
@@ -8,7 +8,7 @@ $(function() {
 
     $("#saveInfo").click(function() {
         if(sessionStorage.cwKg === undefined || sessionStorage.cwKg === "" || sessionStorage.bwKg === undefined || sessionStorage.bwKg === "") {
-            infoPrompt("Please enter the patient's weight");
+            infoPrompt();
         }
     })
 })
