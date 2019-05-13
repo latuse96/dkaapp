@@ -255,6 +255,7 @@ $(document).ready(function () {
     var ageUnit = sessionStorage.ageType;
     var age = ageNum + "," + ageUnit;
     if ($(document).find("title").text() == "Glasgow Coma Scale") {
+        ageUnit = "years";
         checkIfUpdate();
     }
 
@@ -267,7 +268,6 @@ $(document).ready(function () {
     $('.gcNum').css("color", textColor);
     $('.gcResult').css("background-color", sectionBackgroundColor);
     $('.gcResult').css("color", textColor);
-    $('.gc')
 
     function gcCalculate() {
         var g1 = getGroupValues("group1").split(',');
@@ -285,8 +285,13 @@ $(document).ready(function () {
             $('#cat2').css("background-color", sectionBackgroundColor);
             $('#cat3').css("background-color", comaColor);
         } else if (value >= 8) {
-            $('#output').css("background-color", goodColor);
-            $('#outputResult').css("background-color", goodColor);
+            if (value > 8) {
+                $('#output').css("background-color", goodColor);
+                $('#outputResult').css("background-color", goodColor);
+            } else {
+                $('#output').css("background-color", comaColor);
+                $('#outputResult').css("background-color", comaColor);
+            }
             if (value >= 13) {
                 $('#cat1').css("background-color", goodColor);
                 $('#cat2').css("background-color", sectionBackgroundColor);
@@ -295,7 +300,7 @@ $(document).ready(function () {
                 $('#cat1').css("background-color", sectionBackgroundColor);
                 $('#cat2').css("background-color", comaColor);
                 $('#cat3').css("background-color", sectionBackgroundColor);
-            } else {
+            } else if (value >= 3 && value <= 8) {
                 $('#cat1').css("background-color", sectionBackgroundColor);
                 $('#cat2').css("background-color", sectionBackgroundColor);
                 $('#cat3').css("background-color", comaColor);
@@ -305,7 +310,7 @@ $(document).ready(function () {
             $('#outputResult').css("background-color", sectionBackgroundColor);
             $('#cat1').css("background-color", sectionBackgroundColor);
             $('#cat2').css("background-color", sectionBackgroundColor);
-            $('#cat3').css("background-color", comaColor);
+            $('#cat3').css("background-color", sectionBackgroundColor);
         }
         if (value >= 8) {
             $('#outputResult').val("Good chance for recovery");
@@ -334,10 +339,18 @@ $(document).ready(function () {
 
     // Functionality for age input collection
     $('.age-num').on('input', ageNumberChange);
-    $('.age-unit').change(function () {
+    /* $('.age-unit').change(function () {
         $("select option:selected").each(function () {
             ageUnit = $(this).text();
         });
+        convertUnit();
+        age = ageNum + "," + ageUnit;
+        sessionStorage.age = ageNum;
+        sessionStorage.ageType = ageUnit;
+        groupUpdate();
+    });*/
+    $('input:radio[name=age]').change(function () {
+        ageUnit = $(this).val();
         convertUnit();
         age = ageNum + "," + ageUnit;
         sessionStorage.age = ageNum;
