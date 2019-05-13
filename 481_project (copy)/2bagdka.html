@@ -1,0 +1,152 @@
+﻿
+<!DOCTYPE html>
+    <html>
+            <head>
+                    <meta charset="UTF-8">
+                    <title>Menu</title>
+                    <link rel="stylesheet" href="styles.css">
+                    <!-- icons -->
+                    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                    <script src="main.js"></script>
+                    <script src="2bagdka.js"></script>
+            
+                </head>
+    <body>
+            <header>
+
+        
+                    <div class="header">
+                        <!-- start buttons -->
+                           <div class="column">
+                                <div id="infoButton" class="headerbutton">
+                                    <span >
+                                        <i class="fas fa-book-medical fa-2x"></i>
+                                    </span>
+                                    <!-- <p>Patient Info</p> -->
+                                </div>
+                           </div>
+                           <div class="column">
+                               <div id="homeButton" class="headerbutton">
+                                    <span><a id="homelink" href ="index.html">
+                                        <i class="fas fa-home fa-2x"></i>
+                                    </a></span>
+                                    <!-- <p>Home</p> -->
+                                </div>
+                           </div>
+                           <!-- end buttons -->
+            
+            
+                           
+                    </div>
+                    <!-- start info -->
+                <div id="info" class="infoHidden">
+                    <span style="font-size: 36px; font-weight: bold;">Patient Information</span>
+                    <div>
+                        <div id="infoPrompt" hidden='true'></div>
+                        <div class="sectionWrapper">
+                            <div class="boxLabel">Current Weight</div>
+                            <div class="inputWrapper">
+                                <input type="text" id="cwLbs">
+                                <br />
+                                <div class="label">lbs</div>
+                            </div>
+                            <div class="inputWrapper">
+                                <input type="text" id="cwOz">
+                                <span>or</span>
+                                <br />
+                                <div class="label">oz</div>
+
+                            </div>
+
+                            <div class="inputWrapper">
+                                <input type="text" id="cwKg">
+                                <br />
+                                <div class="label">kgs</div>
+                            </div>
+                        </div>
+
+                        <button id="saveInfo">Save</button>
+                    </div>
+                    <!-- end info -->
+                    <!-- this will be a dropddown div, the infopage.php file includes that div -->
+
+</header>
+    <main class="content">
+    <div class='displayBlock'>
+        <table id="dkaTable" class="tg centered">
+            <tr>
+            <th class="tg-baqh"><pre>Blood
+Glucose
+(mg/Dl)</pre></th>
+            <th class="tg-baqh"><pre>Rate from
+0.45% saline
+20 mEq/L KAc
+20 mEq/L KPhos
+Bag
+(gtts/min)</pre></th>
+            <th class="tg-baqh"><pre>Rate from
+10% Dextrose
+0.45% saline
+20 mEq/L KAc
+20 mEq/L KPhos
+Bag
+(gtts/min)</pre></th>
+            <th class="tg-baqh"><pre>Final
+Dextrose
+Concentration
+(%)</pre></th>
+            <th class="tg-baqh"><pre>Insulin
+Infusion
+Rate
+(units/hr)</pre></th>
+            </tr>
+            <tr>
+            <td class="tg-baqh">&gt;300</td>
+            <td class="tg-baqh fullRate"></td>
+            <td class="tg-baqh zeroRate"></td>
+            <td class="tg-baqh">0</td>
+            <td class="tg-baqh infusionRate"></td>
+            </tr>
+            <tr>
+            <td class="tg-baqh">250-299</td>
+            <td class="tg-baqh threeQuarterRate"></td>
+            <td class="tg-baqh quarterRate"></td>
+            <td class="tg-baqh">2.5</td>
+            <td class="tg-baqh infusionRate"></td>
+            </tr>
+            <tr>
+            <td class="tg-baqh">200-249</td>
+            <td class="tg-baqh halfRate"></td>
+            <td class="tg-baqh halfRate"></td>
+            <td class="tg-baqh">5</td>
+            <td class="tg-baqh infusionRate"></td>
+            </tr>
+            <tr>
+            <td class="tg-baqh">150-199</td>
+            <td class="tg-baqh quarterRate"></td>
+            <td class="tg-baqh threeQuarterRate"></td>
+            <td class="tg-baqh">7.5</td>
+            <td class="tg-baqh infusionRate"></td>
+            </tr>
+            <tr>
+            <td class="tg-baqh">100-149</td>
+            <td class="tg-baqh zeroRate"></td>
+            <td class="tg-baqh fullRate"></td>
+            <td class="tg-baqh">10</td>
+            <td class="tg-baqh infusionRate"></td>
+            </tr>
+            <tr>
+            <td class="tg-baqh">&lt;100</td>
+            <td class="tg-baqh" colspan="3"><pre>Discontinue the two-bag system and instead use D12.5%
+concentration with identical saline and electrolyte content.
+Discuss with Attending.
+Check BOHB results and consider readiness to transition off insulin infusion</pre></td>
+            <td class="tg-baqh infusionRate"></td>
+            </tr>
+        </table>
+        <button id='dkaPrintButton' class='centered'>Print</button>
+    </div>
+</main>
+</body>
+</html>
