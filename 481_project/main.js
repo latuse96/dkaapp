@@ -7,7 +7,7 @@ $(document).ready(function () {
         $("#bwLbs").val(sessionStorage.bwLbs);
         $("#bwOz").val(sessionStorage.bwOz);
         $("#bwKg").val(sessionStorage.bwKg);
-        $("#ageType").val(sessionStorage.ageType);
+        $('input[value=' + sessionStorage.ageType + ']').prop("checked", true);
     };
 
     loadInfo();
@@ -163,7 +163,7 @@ $(document).ready(function () {
         sessionStorage.bwLbs = $("#bwLbs").val();
         sessionStorage.bwOz = $("#bwOz").val();
         sessionStorage.bwKg = $("#bwKg").val();
-        sessionStorage.ageType = $("#ageType").children("option:selected").val();
+        sessionStorage.ageType = $('input[name=age]:checked').val();
         populateTable();
         displayWeights();
         computeDifference();
