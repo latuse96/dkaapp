@@ -1,12 +1,12 @@
 $(document).ready(function () {
     loadInfo = function () {
-        $("#cwLbs").val(sessionStorage.cwLbs != "undefined" ? sessionStorage.cwLbs : '');
-        $("#cwOz").val(sessionStorage.cwOz != "undefined" ? sessionStorage.cwOz : '');
-        $("#cwKg").val(sessionStorage.cwKg != "undefined" ? sessionStorage.cwKg : '');
-        $("#age").val(sessionStorage.age != "undefined" ? sessionStorage.age : '');
-        $("#bwLbs").val(sessionStorage.bwLbs != "undefined" ? sessionStorage.bwLbs : '');
-        $("#bwOz").val(sessionStorage.bwOz != "undefined" ? sessionStorage.bwOz : '');
-        $("#bwKg").val(sessionStorage.bwKg != "undefined" ? sessionStorage.bwKg : '');
+        $("#cwLbs").val(sessionStorage.cwLbs !== "undefined" ? sessionStorage.cwLbs : '');
+        $("#cwOz").val(sessionStorage.cwOz !== "undefined" ? sessionStorage.cwOz : '');
+        $("#cwKg").val(sessionStorage.cwKg !== "undefined" ? sessionStorage.cwKg : '');
+        $("#age").val(sessionStorage.age !== "undefined" ? sessionStorage.age : '');
+        $("#bwLbs").val(sessionStorage.bwLbs !== "undefined" ? sessionStorage.bwLbs : '');
+        $("#bwOz").val(sessionStorage.bwOz !== "undefined" ? sessionStorage.bwOz : '');
+        $("#bwKg").val(sessionStorage.bwKg !== "undefined" ? sessionStorage.bwKg : '');
         $('input[value=' + sessionStorage.ageType + ']').prop("checked", true);
     };
 
@@ -156,14 +156,33 @@ $(document).ready(function () {
 
     saveInfo = function () {
         $("#infoPrompt").attr("hidden", true);
-        sessionStorage.cwLbs = $("#cwLbs").val();
-        sessionStorage.cwOz = $("#cwOz").val();
-        sessionStorage.cwKg = $("#cwKg").val();
-        sessionStorage.age = $("#age").val();
-        sessionStorage.bwLbs = $("#bwLbs").val();
-        sessionStorage.bwOz = $("#bwOz").val();
-        sessionStorage.bwKg = $("#bwKg").val();
-        sessionStorage.ageType = $('input[name=age]:checked').val();
+        if ($("#cWLbs").length) {
+            sessionStorage.cwLbs = $("#cwLbs").val();
+        }
+        if ($("#cwOz").length) {
+            sessionStorage.cwOz = $("#cwOz").val();   
+        }
+        if ($("#cwKg").length) {
+            sessionStorage.cwKg = $("#cwKg").val();
+        }
+        if ($("#bwLbs").length) {
+            sessionStorage.bwLbs = $("#bwLbs").val();
+        }
+        if ($("#bwOz").length) {
+            sessionStorage.bwOz = $("#bwOz").val();
+        }
+        if ($("#bwKg").length) {
+            sessionStorage.bwKg = $("#bwKg").val();
+        }
+        if ($("#age").length) {
+            sessionStorage.age = $("#age").val();
+        }
+        if ($("#cWKg").length) {
+            sessionStorage.cwKg = $("#cwKg").val();
+        }
+        if ($("#years").length) {
+            sessionStorage.ageType = $('input[name=age]:checked').val();
+        }
         populateTable();
         displayWeights();
         computeDifference();
