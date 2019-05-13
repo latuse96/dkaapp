@@ -65,6 +65,13 @@
 </header>
 	<main class="content">
 	<form>
+		<div class="gcInput">
+			<label class="gcInputLabel">Age Input:</label>
+			<label class="gcInputNum" name="inputAge" id="inputAge"></label>
+			<label class="gcInputUnit" name="inputUnit" id="inputUnit"></label>
+		</div>
+	</form>
+	<form>
 		<table class="gcTable">
 			<tr>
 				<td class="section">
@@ -145,15 +152,28 @@
 		</table>
 	</form>
 	<form>
-		<div class="gcResultLabel">
+		<!-- <div class="gcResultLabel">
 			<br>
 			<label>Coma Scale Results</label>
-		</div>
-		<div class="gcOutput">
-			<input type="text" class="gcNum" name="outputValue" id="output" readonly value="0"/>
-			<input type="text" class="gcResult" name="result" id="outputResult" readonly value=""/>
-		</div>
-		<table class="gcTable">
+		</div> -->
+		<!-- <div class="gcOutput">
+			<label class="gcNum" name="outputValue" id="output"></label>
+			<label class="gcResult" name="result" id="outputResult"></label>
+		</div> -->
+		<table class="gcTableO">
+				<tr>
+					<td class="section">
+						<label>Coma Scale Calculation</label>
+					</td>
+					<td class="group">
+						<div class="gcOutput">
+							<label class="gcNum" name="outputValue" id="output"></label>
+							<label class="gcResult" name="result" id="outputResult"></label>
+						</div>
+					</td>
+				</tr>
+			</table>
+		<table class="gcTableO">
 			<tr>
 				<td class="section">
 					<label>Coma Score Correlation</label>

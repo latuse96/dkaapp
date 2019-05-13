@@ -248,9 +248,11 @@ $(document).ready(function () {
     var textColor = "black";
     var sectionBackgroundColorA = "rgb(242,229,212)";
     var sectionBackgroundColor = "rgb(242,229,212)";
+    var outputBackgroundColor = "rgb(212,225,242)";
     var selectedColor = "burlywood";
     var goodColor = "rgb(144,238,144,0.75)";
     var comaColor = "rgb(255,255,0,0.75)";
+    var badColor = "rgb(255,25,25,0.75)";
     var ageNum = sessionStorage.age;
     var ageUnit = sessionStorage.ageType;
     var age = ageNum + "," + ageUnit;
@@ -264,9 +266,10 @@ $(document).ready(function () {
     $('.gcBody').css("color", textColor);
     $('.selection').css("background-color", sectionBackgroundColorA);
     $('.gcTable').css("background-color", sectionBackgroundColor);
-    $('.gcNum').css("background-color", sectionBackgroundColor);
+    $('.gcTableO').css("background-color", outputBackgroundColor);
+    $('.gcNum').css("background-color", outputBackgroundColor);
     $('.gcNum').css("color", textColor);
-    $('.gcResult').css("background-color", sectionBackgroundColor);
+    $('.gcResult').css("background-color", outputBackgroundColor);
     $('.gcResult').css("color", textColor);
 
     function gcCalculate() {
@@ -281,9 +284,13 @@ $(document).ready(function () {
         if (value >= 3 && value < 8) {
             $('#output').css("background-color", comaColor);
             $('#outputResult').css("background-color", comaColor);
-            $('#cat1').css("background-color", sectionBackgroundColor);
-            $('#cat2').css("background-color", sectionBackgroundColor);
-            $('#cat3').css("background-color", comaColor);
+            $('#cat1').css("background-color", outputBackgroundColor);
+            $('#cat2').css("background-color", outputBackgroundColor);
+            $('#cat3').css("background-color", badColor);
+            if (value <= 5) {
+                $('#output').css("background-color", badColor);
+                $('#outputResult').css("background-color", badColor);
+            }
         } else if (value >= 8) {
             if (value > 8) {
                 $('#output').css("background-color", goodColor);
@@ -294,37 +301,37 @@ $(document).ready(function () {
             }
             if (value >= 13) {
                 $('#cat1').css("background-color", goodColor);
-                $('#cat2').css("background-color", sectionBackgroundColor);
-                $('#cat3').css("background-color", sectionBackgroundColor);
+                $('#cat2').css("background-color", outputBackgroundColor);
+                $('#cat3').css("background-color", outputBackgroundColor);
             } else if (value >= 9 && value <= 12) {
-                $('#cat1').css("background-color", sectionBackgroundColor);
+                $('#cat1').css("background-color", outputBackgroundColor);
                 $('#cat2').css("background-color", comaColor);
-                $('#cat3').css("background-color", sectionBackgroundColor);
+                $('#cat3').css("background-color", outputBackgroundColor);
             } else if (value >= 3 && value <= 8) {
-                $('#cat1').css("background-color", sectionBackgroundColor);
-                $('#cat2').css("background-color", sectionBackgroundColor);
-                $('#cat3').css("background-color", comaColor);
+                $('#cat1').css("background-color", outputBackgroundColor);
+                $('#cat2').css("background-color", outputBackgroundColor);
+                $('#cat3').css("background-color", badColor);
             }
         } else {
-            $('#output').css("background-color", sectionBackgroundColor);
-            $('#outputResult').css("background-color", sectionBackgroundColor);
-            $('#cat1').css("background-color", sectionBackgroundColor);
-            $('#cat2').css("background-color", sectionBackgroundColor);
-            $('#cat3').css("background-color", sectionBackgroundColor);
+            $('#output').css("background-color", outputBackgroundColor);
+            $('#outputResult').css("background-color", outputBackgroundColor);
+            $('#cat1').css("background-color", outputBackgroundColor);
+            $('#cat2').css("background-color", outputBackgroundColor);
+            $('#cat3').css("background-color", outputBackgroundColor);
         }
         if (value >= 8) {
-            $('#outputResult').val("Good chance for recovery");
+            $('#outputResult').text("Good chance for recovery");
         } else if (value >= 3 && value <= 5) {
-            $('#outputResult').val("Potentially fatal");
+            $('#outputResult').text("Potentially fatal");
         } else if (value > 5 && value < 8) {
-            $('#outputResult').val("Recovery may be possible");
+            $('#outputResult').text("Recovery may be possible");
         } else {
-            $('#outputResult').val("");
+            $('#outputResult').text("");
         }
         if (value >= 3) {
-            $('#output').val(value + "/15");
+            $('#output').text(value + "/15");
         } else {
-            $('#output').val(0);
+            $('#output').text("");
         }
     }
     function getGroupValues(groupName) {
@@ -345,6 +352,8 @@ $(document).ready(function () {
         age = ageNum + "," + ageUnit;
         sessionStorage.age = ageNum;
         sessionStorage.ageType = ageUnit;
+        $("#inputAge").text(ageNum);
+        $("#inputUnit").text(ageUnit);
         groupUpdate();
     });
     function convertUnit() {
@@ -362,6 +371,8 @@ $(document).ready(function () {
         age = ageNum + "," + ageUnit;
         sessionStorage.age = ageNum;
         sessionStorage.ageType = ageUnit;
+        $("#inputAge").text(ageNum);
+        $("#inputUnit").text(ageUnit);
         groupUpdate();
     }
     function checkIfUpdate() {
@@ -375,6 +386,8 @@ $(document).ready(function () {
                 infoPrompt("Please enter the patient's age");
             }
         }
+        $("#inputAge").text(ageNum);
+        $("#inputUnit").text(ageUnit);
         groupUpdate();
     }
 

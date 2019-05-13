@@ -209,6 +209,30 @@ main{
 .tg .tg-baqh{text-align:center;vertical-align:top}
 
 /* START Glasgow Coma Styles */
+.gcInput {
+    text-align: center;
+    padding: 1vw;
+    background-color: rgb(212,225,242);
+}
+
+.gcInput .gcInputLabel {
+    vertical-align: center;
+    font-size: 3vw;
+}
+
+.gcInput .gcInputNum {
+    vertical-align: center;
+    text-align: center;
+    width: 10vw;
+    font-size: 3vw;
+}
+
+.gcInput .gcInputUnit {
+    vertical-align: center;
+    text-align: left;
+    width: 15vw;
+    font-size: 3vw;
+}
 .selection {
     border: 0.1vh solid black;
     margin: 1%;
@@ -236,6 +260,12 @@ main{
     margin: 1%;
 }
 
+.gcTableO {
+    border: 0.1vh solid black;
+    padding: 1%;
+    margin: 1%;
+}
+
 .group {
     width: 1vw;
     height: 1vh;
@@ -254,7 +284,7 @@ main{
     vertical-align: middle;
     text-align: center;
     width: 15vw;
-    font-size: 5vw;
+    font-size: 4vw;
 }
 
 .gcOutput .gcResult {
@@ -263,14 +293,14 @@ main{
     word-wrap: break-word;
     word-break: break-all;
     width: 75vw;
-    font-size: 5vw;
+    font-size: 4vw;
 }
 
 .gcCorrelation {
     margin: 1%;
     padding: 1%;
     vertical-align: middle;
-    text-align: left;
+    text-align: center;
     font-size: 3vw;
 }
 /* END Glasgow Coma Style */
