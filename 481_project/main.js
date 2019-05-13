@@ -1,12 +1,12 @@
 $(document).ready(function () {
     loadInfo = function () {
-        $("#cwLbs").val(sessionStorage.cwLbs);
-        $("#cwOz").val(sessionStorage.cwOz);
-        $("#cwKg").val(sessionStorage.cwKg);
-        $("#age").val(sessionStorage.age);
-        $("#bwLbs").val(sessionStorage.bwLbs);
-        $("#bwOz").val(sessionStorage.bwOz);
-        $("#bwKg").val(sessionStorage.bwKg);
+        $("#cwLbs").val(sessionStorage.cwLbs != "undefined" ? sessionStorage.cwLbs : '');
+        $("#cwOz").val(sessionStorage.cwOz != "undefined" ? sessionStorage.cwOz : '');
+        $("#cwKg").val(sessionStorage.cwKg != "undefined" ? sessionStorage.cwKg : '');
+        $("#age").val(sessionStorage.age != "undefined" ? sessionStorage.age : '');
+        $("#bwLbs").val(sessionStorage.bwLbs != "undefined" ? sessionStorage.bwLbs : '');
+        $("#bwOz").val(sessionStorage.bwOz != "undefined" ? sessionStorage.bwOz : '');
+        $("#bwKg").val(sessionStorage.bwKg != "undefined" ? sessionStorage.bwKg : '');
         $('input[value=' + sessionStorage.ageType + ']').prop("checked", true);
     };
 
