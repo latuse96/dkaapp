@@ -199,8 +199,6 @@ $(document).ready(function () {
             }
         }
         if ($("#years").length || $("#months").length || $("#days").length) {
-            var inUnit = $('input[name=age]:checked').val();
-            console.log("checked: " + inUnit);
             sessionStorage.ageType = $('input[name=age]:checked').val();
         }
         populateTable();
@@ -427,7 +425,12 @@ $(document).ready(function () {
         }
         $("#inputAge").text(sessionStorage.age);
         $("#inputUnit").text(sessionStorage.ageType);
-        age = ($("#age").val() != '' ? sessionStorage.age : 0) + "," + $('input[name=age]:checked').val()
+        age = ($("#age").val() != '' ? sessionStorage.age : 0) + "," + $('input[name=age]:checked').val();
+        if ($("#inputAge").text() == 0) {
+            $('#gcInput').css("background-color", badColor);
+        } else {
+            $('#gcInput').css("background-color", outputBackgroundColor);
+        }
         groupUpdate();
     }
 
