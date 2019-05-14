@@ -180,8 +180,13 @@ $(document).ready(function () {
         if ($("#cWKg").length) {
             sessionStorage.cwKg = $("#cwKg").val();
         }
-        if ($("#years").length) {
-            sessionStorage.ageType = $('input[name=age]:checked').val();
+        if ($("#years").length || $("#months").length || $("#days").length) {
+            var inUnit = $('input[name=age]:checked').val();
+            if (inUnit == undefined) {
+                sessionStorage.ageType = "years";
+            } else {
+                sessionStorage.ageType = $('input[name=age]:checked').val();
+            }
         }
         populateTable();
         displayWeights();
@@ -276,7 +281,6 @@ $(document).ready(function () {
     var ageUnit = sessionStorage.ageType;
     var age = ageNum + "," + ageUnit;
     if ($(document).find("title").text() == "Glasgow Coma Scale") {
-        ageUnit = "years";
         checkIfUpdate();
     }
 
@@ -406,7 +410,7 @@ $(document).ready(function () {
             }
         }
         $("#inputAge").text(ageNum);
-        $("#inputUnit").text(ageUnit);
+        $("#inputUnit").text(sessionStorage.ageType);
         groupUpdate();
     }
 
