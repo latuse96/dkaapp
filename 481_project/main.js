@@ -1,12 +1,12 @@
 $(document).ready(function () {
     loadInfo = function () {
-        $("#cwLbs").val(sessionStorage.cwLbs !== "undefined" ? sessionStorage.cwLbs : '');
-        $("#cwOz").val(sessionStorage.cwOz !== "undefined" ? sessionStorage.cwOz : '');
-        $("#cwKg").val(sessionStorage.cwKg !== "undefined" ? sessionStorage.cwKg : '');
-        $("#age").val(sessionStorage.age !== "undefined" ? sessionStorage.age : '');
-        $("#bwLbs").val(sessionStorage.bwLbs !== "undefined" ? sessionStorage.bwLbs : '');
-        $("#bwOz").val(sessionStorage.bwOz !== "undefined" ? sessionStorage.bwOz : '');
-        $("#bwKg").val(sessionStorage.bwKg !== "undefined" ? sessionStorage.bwKg : '');
+        $("#cwLbs").val(sessionStorage.cwLbs != "undefined" ? sessionStorage.cwLbs : '');
+        $("#cwOz").val(sessionStorage.cwOz != "undefined" ? sessionStorage.cwOz : '');
+        $("#cwKg").val(sessionStorage.cwKg != "undefined" ? sessionStorage.cwKg : '');
+        $("#age").val(sessionStorage.age != "undefined" ? sessionStorage.age : '');
+        $("#bwLbs").val(sessionStorage.bwLbs != "undefined" ? sessionStorage.bwLbs : '');
+        $("#bwOz").val(sessionStorage.bwOz != "undefined" ? sessionStorage.bwOz : '');
+        $("#bwKg").val(sessionStorage.bwKg != "undefined" ? sessionStorage.bwKg : '');
         $('input[value=' + sessionStorage.ageType + ']').prop("checked", true);
     };
 
@@ -166,7 +166,7 @@ $(document).ready(function () {
 
     saveInfo = function () {
         $("#infoPrompt").attr("hidden", true);
-        if ($("#cWLbs").length) {
+        if ($("#cwLbs").length) {
             sessionStorage.cwLbs = $("#cwLbs").val();
         }
         if ($("#cwOz").length) {
@@ -415,7 +415,7 @@ $(document).ready(function () {
     function checkIfUpdate() {
         var input = age.split(',');
         if (input[0] != "" && input[1] != "") {
-            if (sessionStorage.age == undefined || sessionStorage.ageType == undefined || input[0] == undefined || input[1] == undefined) {
+            if (sessionStorage.age == undefined || sessionStorage.ageType == undefined) {
                 infoPrompt("Please enter the patient's age");
             }
         } else {
