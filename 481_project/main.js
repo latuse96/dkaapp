@@ -143,6 +143,16 @@ $(document).ready(function () {
         $("#bwKg").val(kg);
     });
 
+    $("#age").on('keyup input', function () {
+        var input = $("#age").val();
+        input = input.replace(/[^0-9.]/g, '');
+        $("#age").val(input);
+
+        if (input == ""){
+            $("#age").val("");
+        }
+    });
+
     $("#infoButton").click(function () {
         $("#info").removeClass("infoHidden").addClass("infoShow");
     });
