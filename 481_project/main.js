@@ -180,17 +180,23 @@ $(document).ready(function () {
         if ($("#cWKg").length) {
             sessionStorage.cwKg = $("#cwKg").val();
         }
+        if ($("#age").length) {
+            var inUnit = $("#age").val();
+            if (inUnit == "") {
+                sessionStorage.age = 0;
+            } else {
+                sessionStorage.age = $("#age").val();
+            }
+        }
         if ($("#years").length || $("#months").length || $("#days").length) {
             var inUnit = $('input[name=age]:checked').val();
-            if (inUnit == undefined) {
-                sessionStorage.ageType = "years";
-            } else {
-                sessionStorage.ageType = $('input[name=age]:checked').val();
-            }
+            console.log("checked: " + inUnit);
+            sessionStorage.ageType = $('input[name=age]:checked').val();
         }
         populateTable();
         displayWeights();
         computeDifference();
+        checkIfUpdate();
     };
 
     populateTable = function() {
@@ -401,7 +407,7 @@ $(document).ready(function () {
     function checkIfUpdate() {
         var input = age.split(',');
         if (input[0] != "" && input[1] != "") {
-            if (sessionStorage.age == undefined || sessionStorage.ageType == undefined) {
+            if (sessionStorage.age == undefined || sessionStorage.ageType == undefined || input[0] == undefined || input[1] == undefined) {
                 infoPrompt("Please enter the patient's age");
             }
         } else {
@@ -409,8 +415,9 @@ $(document).ready(function () {
                 infoPrompt("Please enter the patient's age");
             }
         }
-        $("#inputAge").text(ageNum);
+        $("#inputAge").text(sessionStorage.age);
         $("#inputUnit").text(sessionStorage.ageType);
+        age = ($("#age").val() != '' ? sessionStorage.age : 0) + "," + $('input[name=age]:checked').val()
         groupUpdate();
     }
 
